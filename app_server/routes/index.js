@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var homeCtrl = require('../controllers/home');
-const mCtrl = require('../controllers/Ms')
+const mCtrl = require('../controllers/Ms');
+const smCtrl = require('../controllers/SMs')
 
 /* GET home page. */
 router.get('/', homeCtrl.home);
@@ -24,14 +25,14 @@ router
 //list
 router
   .route('/ms/:mId/sms')
-  .get(mCtrl.readSMs)
-  .post(mCtrl.createSM);
+  .get(smCtrl.readSMs)
+  .post(smCtrl.createSM);
 //instance
 router
   .route('/ms/:mId/sms/:smId')
-  .get(mCtrl.readSM)
-  .put(mCtrl.updateSM)
-  .delete(mCtrl.deleteSM);
+  .get(smCtrl.readSM)
+  .put(smCtrl.updateSM)
+  .delete(smCtrl.deleteSM);
 
 
 module.exports = router;
