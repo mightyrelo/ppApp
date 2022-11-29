@@ -1,9 +1,6 @@
 extends content-layout
 
 block main_content
-  .row.banner 
-    .col-12 
-      h1 LA 
   .row 
     .col-12.col-lg-9 
       .row 
@@ -14,28 +11,21 @@ block main_content
             i.far.fa-star
             i.far.fa-star
             i.far.fa-star
-          p a1 
+          p= m.a1 
           .card.card-primary 
             .card-block 
               h2.card-title Duration 
-              p.card-text a1
-              p.card-text a2
-              p.card-text a3 
+              p.card-text= m.a2
+              p.card-text= m.a3
+              p.card-text= m.a4 
           .card.card-primary 
             .card-block 
               h2.card-title Facilities 
-              span.badge.badge-warning 
-                i.fa.fa-check 
-                | &nbsp; aa1 
-              | &nbsp;
-              span.badge.badge-warning 
-                i.fa.fa-check 
-                | &nbsp; aa2 
-              | &nbsp;
-              span.badge.badge-warning 
-                i.fa.fa-check 
-                | &nbsp; aa3 
-              | &nbsp;
+              each facility in m.facilities
+                span.badge.badge-warning 
+                  i.fa.fa-check 
+                  | &nbsp; #{facility} 
+                | &nbsp;
         .col-12.col-md-6.location-map 
           .card.card-primary 
             .card-block 
@@ -56,10 +46,5 @@ block main_content
                   small.review Author Y Z
                 .col-12 
                   p Something about something 
-        .col-12.col-lg-3 
-          p.lead 
-            | This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company 
-          p 
-            | If you've used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.          
 
 
