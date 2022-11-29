@@ -7,7 +7,7 @@ const createSM = (req, res) => {
 
 const readSMs = (req, res) => {
     res.render('sm-list', {
-        title: 'Details of SMs'
+        title: 'List of SMs'
     });
 };
 

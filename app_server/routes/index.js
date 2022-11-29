@@ -27,6 +27,9 @@ router
   .route('/ms/:mId/sms')
   .get(smCtrl.readSMs)
   .post(smCtrl.createSM);
+router
+  .route('/ms/:mId/sms/new')
+  .get(smCtrl.createSM)
 //instance
 router
   .route('/ms/:mId/sms/:smId')
