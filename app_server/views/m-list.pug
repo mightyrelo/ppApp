@@ -5,16 +5,16 @@ block main_content
     .card 
       .card-block 
         h4 
-          a(href='/m') #{m.a1} 
+          a(href='/m')= m.a1 
           small &nbsp;
             i.fas.fa-star
             i.fas.fa-star
-            i.fas.fa-star
+            i.far.fa-star
             i.far.fa-star
             i.far.fa-star
           span.badge.badge-pill.badge-default.float-right= m.a2 
-        p.address= m.a2 
-        each facility in m.facilities
-          .facilities 
+        p.address= m.a3
+        .facilities 
+          each facility in m.facilities 
             span.badge.badge-warning= facility
   
