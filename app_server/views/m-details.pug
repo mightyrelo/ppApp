@@ -1,23 +1,21 @@
 extends content-layout
 
+include _include/sharedHTMLFunctions
+
 block main_content
   .row 
     .col-12.col-lg-9 
       .row 
         .col-12.col-md-6 
           p.rating 
-            i.fas.fa-star
-            i.fas.fa-star
-            i.far.fa-star
-            i.far.fa-star
-            i.far.fa-star
+           +outputRating(m.a2)
           p= m.a1 
           .card.card-primary 
             .card-block 
               h2.card-title Duration 
-              p.card-text= m.a2
               p.card-text= m.a3
-              p.card-text= m.a4 
+              p.card-text= m.a4
+              p.card-text= m.a5 
           .card.card-primary 
             .card-block 
               h2.card-title Facilities 

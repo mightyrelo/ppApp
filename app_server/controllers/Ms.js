@@ -32,7 +32,7 @@ const readMs = (req, res) => {
             facilities: ['bb1', 'bb2', 'bb3']
         }, {
             a1: 'c1',
-            a2: 3,
+            a2: 2,
             a3: 'c3',
             a4: 'c4',
             facilities: ['cc1', 'cc2', 'cc3']
@@ -55,6 +55,7 @@ const readM = (req, res) => {
             a2: 3,
             a3: 'a3',
             a4: 'a4',
+            a5: 'a5',
             facilities: ['aa1', 'aa2', 'aa3'],
         }
 
