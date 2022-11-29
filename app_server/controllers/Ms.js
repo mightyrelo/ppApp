@@ -20,19 +20,19 @@ const readMs = (req, res) => {
         sideBar: 'Looking to create or update your personal profile for an upcoming job application? ppApp helps you create a profile with a professional appeal and helps you secure that position you\'ve been aiming at. Let ppApp set you apart from competitors and help you prepare for that interview and keep track of your skills, qualifications and experiences as and when you aquire them. Good Luck, the ppApp is With You! Nothing gets you more prepared for a coding interview than a properly packaged personal profile.',
         Ms: [{
             a1: 'a1',
-            a2: 'a2',
+            a2: 5,
             a3: 'a3',
             a4: 'a4',
             facilities: ['aa1', 'aa2', 'aa3']
         }, {
             a1: 'b1',
-            a3: 'b2',
+            a2: 3,
             a3: 'b3',
             a4: 'b4',
             facilities: ['bb1', 'bb2', 'bb3']
         }, {
             a1: 'c1',
-            a2: 'c2',
+            a2: 3,
             a3: 'c3',
             a4: 'c4',
             facilities: ['cc1', 'cc2', 'cc3']
@@ -52,7 +52,7 @@ const readM = (req, res) => {
         callToAction: 'If you\'ve used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.',
         m: {
             a1: 'a1',
-            a2: 'a2',
+            a2: 3,
             a3: 'a3',
             a4: 'a4',
             facilities: ['aa1', 'aa2', 'aa3'],

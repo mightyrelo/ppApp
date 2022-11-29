@@ -1,5 +1,7 @@
 extends content-layout
 
+include _include/sharedHTMLFunctions
+
 block main_content
   each m in Ms
     .card 
@@ -7,13 +9,9 @@ block main_content
         h4 
           a(href='/m')= m.a1 
           small &nbsp;
-            i.fas.fa-star
-            i.fas.fa-star
-            i.far.fa-star
-            i.far.fa-star
-            i.far.fa-star
-          span.badge.badge-pill.badge-default.float-right= m.a2 
-        p.address= m.a3
+            +outputRating(m.a2) 
+          span.badge.badge-pill.badge-default.float-right= m.a3 
+        p.address= m.a4
         .facilities 
           each facility in m.facilities 
             span.badge.badge-warning= facility
