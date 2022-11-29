@@ -6,8 +6,8 @@ legend {
 font-family: 'Lobster', cursive;
 }
 .navbar {
-background-color: #ad1d28;
-border-color: #911821;
+background-color: green;
+border-color: greenyellow;
 }
 .navbar-light .navbar-brand {
 font-family: 'Lobster', cursive;
@@ -51,8 +51,8 @@ margin-left: -16px;
 margin-bottom: 0.5em;
 }
 .badge-default, .btn-primary {
-background-color: #ad1d28;
-border-color: #911821;
+background-color: green;
+border-color: greenyellow;
 }
 h4 a, h4 a:hover {
 color: #fff;
