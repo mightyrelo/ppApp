@@ -1,20 +1,65 @@
 extends content-layout
 
 block main_content
-  .card 
-    .card-block 
-      h4 
-        a(href='/m') LA 
-        small &nbsp;
-          i.fas.fa-star
-          i.fas.fa-star
-          i.fas.fa-star
-          i.far.fa-star
-          i.far.fa-star
-        span.badge.badge-pill.badge-default.float-right a1 
-      p.address a2 
-      .facilities 
-        span.badge.badge-warning aa1
-        span.badge.badge-warning aa2
-        span.badge.badge-warning aa3
+  .row.banner 
+    .col-12 
+      h1 LA 
+  .row 
+    .col-12.col-lg-9 
+      .row 
+        .col-12.col-md-6 
+          p.rating 
+            i.fas.fa-star
+            i.fas.fa-star
+            i.far.fa-star
+            i.far.fa-star
+            i.far.fa-star
+          p a1 
+          .card.card-primary 
+            .card-block 
+              h2.card-title Duration 
+              p.card-text a1
+              p.card-text a2
+              p.card-text a3 
+          .card.card-primary 
+            .card-block 
+              h2.card-title Facilities 
+              span.badge.badge-warning 
+                i.fa.fa-check 
+                | &nbsp; aa1 
+              | &nbsp;
+              span.badge.badge-warning 
+                i.fa.fa-check 
+                | &nbsp; aa2 
+              | &nbsp;
+              span.badge.badge-warning 
+                i.fa.fa-check 
+                | &nbsp; aa3 
+              | &nbsp;
+        .col-12.col-md-6.location-map 
+          .card.card-primary 
+            .card-block 
+              h2.card-title LA Pictures 
+      .row 
+        .col-12 
+          .card-primary.review-card 
+            .card-block 
+              a.btn.btn-primary.float-right(href='/ms/mId/sms') Add SM 
+              h2.card-title SMs 
+              .row.review 
+                .col-12.no-gutters.review-header 
+                  small.review Author Y Z
+                .col-12 
+                  p Something about something 
+              .row.review 
+                .col-12.no-gutters.review-header 
+                  small.review Author Y Z
+                .col-12 
+                  p Something about something 
+        .col-12.col-lg-3 
+          p.lead 
+            | This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company 
+          p 
+            | If you've used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.          
+
 
