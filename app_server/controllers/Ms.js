@@ -45,8 +45,8 @@ const readM = (req, res) => {
     res.render('m-details', {
         title: 'Details of M',
         pageHeader: {
-            title: 'ppApp',
-            strapline: 'Create and update personal profile for work applications.'
+            title: 'Details of M',
+            strapline: ''
         },
         sideBar: '| This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company.', 
         callToAction: 'If you\'ve used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.',
