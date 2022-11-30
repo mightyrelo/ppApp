@@ -40,8 +40,8 @@ const mReadAll = (req, res) => {
     M
      .find()
      .exec((err, ms)=>{
-        if(err) {sendJSONResponse(res, 400, err);}
-        if(!ms) {sendJSONResponse(res, 404, {"message":"ms not found"});}
+        if(err) {sendJSONResponse(res, 400, err); return}
+        if(!ms) {sendJSONResponse(res, 404, {"message":"ms not found"}); return}
         sendJSONResponse(res, 200, ms);
      });
 };
@@ -49,12 +49,12 @@ const mReadAll = (req, res) => {
 //instance operations
 const mReadOne = (req, res) => {
     const mId = req.params.mId;
-    if(!mId) {sendJSONResponse(res, 400, {"message":"m id required"});}
+    if(!mId) {sendJSONResponse(res, 400, {"message":"m id required"}); return;}
     M
      .findById(mId)
      .exec((err, m)=>{
-        if(err) {sendJSONResponse(res, 400, err);}
-        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
+        if(err) {sendJSONResponse(res, 400, err); return}
+        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});return;}
         sendJSONResponse(res, 200, m);
      });
 };
