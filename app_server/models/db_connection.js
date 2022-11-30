@@ -15,6 +15,20 @@ mongoose.connection.on('error', (error) => {
 });
 
 mongoose.connection.on('disconnected', () => {
-    console.log('mongoose disconnected');
-})
+    //
+});
+
+process.on('SIGINT', () => {
+    gracefulShutdown('app termination', ()=> {
+        process.exit(0);
+    })
+});
+
+const gracefulShutdown = (source, callback) => {
+    mongoose.connection.close(() => {
+        console.log('mongoose disconnected through ', source);
+        callback();
+    });
+
+}
 
