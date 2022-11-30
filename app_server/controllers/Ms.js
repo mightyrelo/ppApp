@@ -57,7 +57,7 @@ const readM = (req, res) => {
             a4: 'a4',
             a5: 'a5',
             facilities: ['aa1', 'aa2', 'aa3'],
-            durations: {
+            duration: {
                 start: '2022 January',
                 end: '2022 September'
             },

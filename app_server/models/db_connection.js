@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 require('./Ms');
 
 //connection string
-const dbURI = 'mongodb://localhost/ppApp';
+let dbURI = 'mongodb://localhost/ppApp';
+
+if(process.env.NODE_ENV !== 'production') {
+    dbURI = 'mongodb+srv://accsight:K%40stx8909@cluster0.hvixj0e.mongodb.net/ppApp';
+}
 
 mongoose.connect(dbURI, {useNewUrlParser: true});
 
