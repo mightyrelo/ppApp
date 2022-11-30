@@ -1,12 +1,28 @@
-//list operations
-const mCreateOne = (req, res) => {};
+const sendJSONResponse = (res, code, content) => {
+    res
+      .status(code)
+      .json(content);
+};
 
-const mReadAll = (req, res) => {};
+//list operations
+const mCreateOne = (req, res) => {
+    sendJSONResponse(res, 200, {"message":"m created"});
+};
+
+const mReadAll = (req, res) => {
+    sendJSONResponse(res, 200, {"message":"ms read"});
+};
 
 //instance operations
-const mReadOne = (req, res) => {};
-const mUpdateOne = (req, res) => {};
-const mDeleteOne = (req, res) => {};
+const mReadOne = (req, res) => {
+    sendJSONResponse(res, 200, {"message":"m read"});
+};
+const mUpdateOne = (req, res) => {
+    sendJSONResponse(res, 200, {"message":"m updated"});
+};
+const mDeleteOne = (req, res) => {
+    sendJSONResponse(res, 200, {"message":"m deleted"});
+};
 
 
 module.exports = {
