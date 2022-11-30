@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //connect instance of mongoose to db
-require('./app_server/models/db_connection');
+require('./app_api/models/db_connection');
 
 var indexRouter = require('./app_server/routes/index');
+const apiRouter = require('./app_api/routes/apIndex');
 
 
 var app = express();
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler
