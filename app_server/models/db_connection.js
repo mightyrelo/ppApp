@@ -4,7 +4,7 @@ require('./Ms');
 //connection string
 let dbURI = 'mongodb://localhost/ppApp';
 
-if(process.env.NODE_ENV !== 'production') {
+if(process.env.NODE_ENV === 'production') {
     dbURI = 'mongodb+srv://accsight:K%40stx8909@cluster0.hvixj0e.mongodb.net/ppApp';
 }
 
