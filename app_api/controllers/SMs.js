@@ -9,8 +9,31 @@ const sendJSONResponse = (res, code, content) => {
 
 
 //submodel list operations
+const doCreateSM = (req, res, m) => {
+    const formSM = {
+        b1: req.body.b1,
+        b2: parseFloat(req.body.b2),
+    };
+    m.sms.push(formSM);
+    m.save((err, m)=> {
+        if(err) {sendJSONResponse(res, 400, err); return}
+        if(!m) {sendJSONResponse(res, 404, {"message":"could not save m"}); return;}
+        const thisSM = m.sms.slice(-1).pop();
+        sendJSONResponse(res, 201, thisSM);
+    })
+
+};
 const smCreateOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"sm created"});
+    const mId = req.params.mId;
+    if(!mId) {sendJSONResponse(res, 400, {"message":"m id required"}); return;}
+    M
+     .findById(mId)
+     .select('sms')
+     .exec((err, m) => {
+        if(err) {sendJSONResponse(res, 400, err); return;}
+        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"}); return;}
+        doCreateSM(req, res, m);
+     });
 };
 
 const smReadAll = (req, res) => {
