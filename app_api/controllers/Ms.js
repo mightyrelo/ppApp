@@ -18,14 +18,13 @@ const formIsValid = (req) => {
 
 //list operations
 const mCreateOne = (req, res) => {
-    console.log(req.body.a1)
     if(formIsValid(req)) {
         const formM = {
             a1: req.body.a1,
             a2: parseInt(req.body.a2),
             a3: req.body.a3,
             a4: req.body.a4,
-            facilities: req.body.facilities
+            facilities: req.body.facilities.split(',')
         };
         M
          .create(formM, (err, m) => {
@@ -60,7 +59,23 @@ const mReadOne = (req, res) => {
      });
 };
 const mUpdateOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"m updated"});
+    if(!req.params.mId) {sendJSONResponse(res, 400, {"message":"m id required"}); return;}
+    M
+     .findById(req.params.mId)
+     .exec((err, m) => {
+        if(err) {sendJSONResponse(res, 400, err); return;}
+        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"}); return;}
+        m.a1 = req.body.a1;
+        m.a2 = parseInt(req.body.a2);
+        m.a3 = req.body.a3;
+        m.a4 = req.body.a4;
+        m.facilities = req.body.facilities.split(',');
+        m.save((err, savedM) => {
+            if(err) {sendJSONResponse(res, 400, err);}
+            if(!savedM) {sendJSONResponse(res, 404, {"message":"could not update m"});}
+            sendJSONResponse(res, 200, savedM);
+        })
+     }); 
 };
 const mDeleteOne = (req, res) => {
     sendJSONResponse(res, 200, {"message":"m deleted"});
