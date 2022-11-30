@@ -13,7 +13,13 @@ const mCreateOne = (req, res) => {
 };
 
 const mReadAll = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"ms read"});
+    M
+     .find()
+     .exec((err, ms)=>{
+        if(err) {sendJSONResponse(res, 400, err);}
+        if(!ms) {sendJSONResponse(res, 404, {"message":"ms not found"});}
+        sendJSONResponse(res, 200, ms);
+     });
 };
 
 //instance operations
