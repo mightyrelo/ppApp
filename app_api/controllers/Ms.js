@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const M = mongoose.model('M');
+
 const sendJSONResponse = (res, code, content) => {
     res
       .status(code)
@@ -15,7 +18,15 @@ const mReadAll = (req, res) => {
 
 //instance operations
 const mReadOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"m read"});
+    const mId = req.params.mId;
+    if(!mId) {sendJSONResponse(res, 400, {"message":"m id required"});}
+    M
+     .findById(mId)
+     .exec((err, m)=>{
+        if(err) {sendJSONResponse(res, 400, err);}
+        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
+        sendJSONResponse(res, 200, m);
+     });
 };
 const mUpdateOne = (req, res) => {
     sendJSONResponse(res, 200, {"message":"m updated"});
