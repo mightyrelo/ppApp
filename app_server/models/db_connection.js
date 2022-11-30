@@ -11,7 +11,7 @@ mongoose.connection.on('connected', () => {
 });
 
 mongoose.connection.on('error', (error) => {
-    console.log('connection error ', error );
+    console.log('error in connection ', error );
 });
 
 mongoose.connection.on('disconnected', () => {
@@ -20,6 +20,16 @@ mongoose.connection.on('disconnected', () => {
 
 process.on('SIGINT', () => {
     gracefulShutdown('app termination', ()=> {
+        process.exit(0);
+    })
+});
+process.once('SIGUSR2', () => {
+    gracefceulShutdown('nodemon restart', ()=> {
+        process.kill(process.pid, 'SIGUSR2');
+    })
+});
+process.on('SIGTERM', () => {
+    gracefulShutdown('heroku termination', ()=> {
         process.exit(0);
     })
 });
