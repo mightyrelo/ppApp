@@ -45,7 +45,7 @@ const readM = (req, res) => {
     res.render('m-details', {
         title: 'Details of M',
         pageHeader: {
-            title: 'Details of M',
+            title: 'M',
             strapline: ''
         },
         sideBar: '| This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company.', 
@@ -57,6 +57,19 @@ const readM = (req, res) => {
             a4: 'a4',
             a5: 'a5',
             facilities: ['aa1', 'aa2', 'aa3'],
+            durations: {
+                start: '2022 January',
+                end: '2022 September'
+            },
+            sms: [{
+                b1: 'placeholder',
+                b2: 9,
+                b3: Date.now()
+            }, {
+                b1: 'another placeholder',
+                b2: 3,
+                b3: Date.now()
+            }]
         }
 
     });

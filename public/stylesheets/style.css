@@ -50,7 +50,7 @@ margin-right: -16px;
 margin-left: -16px;
 margin-bottom: 0.5em;
 }
-.badge-default, .btn-primary {
+.badge-default, .badge-pill, .badge, .btn-primary {
 background-color: green;
 border-color: greenyellow;
 }
