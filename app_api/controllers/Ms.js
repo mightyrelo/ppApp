@@ -7,9 +7,34 @@ const sendJSONResponse = (res, code, content) => {
       .json(content);
 };
 
+const formIsValid = (req) => {
+    console.log(req.body.a1);
+    if(!req.body.a1 || !req.body.a2 || !req.body.a3 ||!req.body.a4 ||!req.body.facilities) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 //list operations
 const mCreateOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"m created"});
+    console.log(req.body.a1)
+    if(formIsValid(req)) {
+        const formM = {
+            a1: req.body.a1,
+            a2: parseInt(req.body.a2),
+            a3: req.body.a3,
+            a4: req.body.a4,
+            facilities: req.body.facilities
+        };
+        M
+         .create(formM, (err, m) => {
+           if(err) {sendJSONResponse(res, 400, {"message":"could not load m"}); return;}
+           sendJSONResponse(res, 201, m);        
+         });    
+    } else {
+        sendJSONResponse(res, 400, {"message":"all fileds required"});
+    }
 };
 
 const mReadAll = (req, res) => {

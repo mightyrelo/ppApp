@@ -21,11 +21,19 @@ const smReadAll = (req, res) => {
         if(err) {sendJSONResponse(res, 400, err);}
         if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
         const smS = m.sms;
-        const response = {
-            k: m.a1,
-            j: smS
+        if(!smS) {sendJSONResponse(res, 404, {"message":"no sms found"})}
+        if(smS && smS.length > 0) {
+            const response = {
+                m: {
+                   a1 : m.a1,
+                   id: req.params.mId 
+                },
+                sms: smS
         };
         sendJSONResponse(res, 200, response);
+        } else {
+            sendJSONResponse(res, 404, {"message":"no sms"})
+        }
      });
 
 };
@@ -40,12 +48,18 @@ const smReadOne = (req, res) => {
      .exec((err, m) => {
         if(err) {sendJSONResponse(res, 400, err);}
         if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
-        const sm = m.sms.id(req.params.smId);
-        const response = {
-            k: m.a1,
-            j: sm
-        };
-        sendJSONResponse(res, 200, response);
+        if(m.sms && m.sms.length > 0) {
+            const sm = m.sms.id(req.params.smId);
+            if(!sm) {sendJSONResponse(res, 404, {"message":"sm not found"})}
+            const response = {
+                m: {
+                    a1: m.a1,
+                    id: m._id
+                },
+                sm
+            };
+            sendJSONResponse(res, 200, response);    
+        }
      })
 };
 
