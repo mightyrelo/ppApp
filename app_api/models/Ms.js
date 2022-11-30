@@ -24,7 +24,7 @@ const MSchema = mongoose.Schema({
     },
     a2: {
         //data characteristics
-        type: Number,
+        type: String,
         required: true,
         'default': 0,
         min: 0,
