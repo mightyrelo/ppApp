@@ -25,6 +25,12 @@ router
   .put(mCtrl.updateM)
   .delete(mCtrl.deleteM);
 
+
+router
+  .route('/ms/:mId/del')
+  .get(mCtrl.deleteM);
+  
+
 //submodel routes
 //list
 router

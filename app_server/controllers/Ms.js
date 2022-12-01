@@ -40,7 +40,10 @@ const openMForm = (req, res) => {
             title: 'Create Instance of M',
             strapline: ''
         },
-        sideBar: 'The hood doesn\'t need more hardwares, it\'s the software that\'s hard to find. '
+        sideBar: {
+            content: 'M is the generic database model.',
+            callToAction: 'There are three end point levels - collection, document and subdocument. For each level we define appropriate crud operations'
+        }
     });
 }
 const createM = (req, res) => {
@@ -144,6 +147,10 @@ const readM = (req, res) => {
     })
    
 };
+
+const openUpdateForm = (req, res) => {
+
+};
 const updateM = (req, res) => {
     res.render('m-update', {
         title: 'Update M', 
@@ -156,14 +163,18 @@ const updateM = (req, res) => {
     });
 };
 const deleteM = (req, res) => {
-    res.render('m-delete', {
-        title: 'Delete M', 
-        pageHeader: {
-            title: 'Delete M',
-            strapline: ''
-        },
-        sideBar: 'Deletion is sensitive, be certain before proceeding'
-
+    const path = `ms/${req.params.mId}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'DELETE',   
+        json: {}
+    };
+    request(requestOptions, (err, {statusCode}, body) => {
+        if(statusCode === 204 ) {
+            res.redirect(`/ms`);
+        } else {
+            showError(req, res, statusCode);
+        }
     });
 };
 
