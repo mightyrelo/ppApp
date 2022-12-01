@@ -32,6 +32,7 @@ const MSchema = mongoose.Schema({
     },
     a3: String,
     a4: String,
+    a5: String,
     facilities: [String],
     duration: DurationSchema,
     sms: [SMSchema]
