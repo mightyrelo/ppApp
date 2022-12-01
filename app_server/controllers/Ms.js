@@ -21,6 +21,15 @@ const createM = (req, res) => {
 };
 
 const renderMList = (req, res, ms) => {
+    let message = null;
+    if(!(ms instanceof Array)) {
+        message = 'API lookup error';
+        ms = [];
+    } else {
+        if(!ms.length) {
+            message = 'no ms found'
+        }
+    }
     res.render('m-list', {
         title: 'List of Ms',
         pageHeader: {
@@ -28,7 +37,8 @@ const renderMList = (req, res, ms) => {
             strapline: 'Create and update personal profile for work applications.'
         },
         sideBar: 'Looking to create or update your personal profile for an upcoming job application? ppApp helps you create a profile with a professional appeal and helps you secure that position you\'ve been aiming at. Let ppApp set you apart from competitors and help you prepare for that interview and keep track of your skills, qualifications and experiences as and when you aquire them. Good Luck, the ppApp is With You! Nothing gets you more prepared for a coding interview than a properly packaged personal profile.',
-        Ms: ms
+        Ms: [],
+        message
     });
 
 };
@@ -39,10 +49,10 @@ const readMs = (req, res) => {
         method: 'GET',
         json: {},
     };
-    request(requestOptions, (err, {status}, ms) => {
-        if(status === 200) {
-            renderMList(req, res, ms);
-        } else {}
+    request(requestOptions, (err, {statusCode}, ms) => {
+        let data = [];
+        if(statusCode === 200) {data = ms;} 
+        renderMList(req, res, data);
     });
 };
 
