@@ -49,7 +49,7 @@ const smReadOne = (req, res) => {
           sendJSONResponse(res, 404, err);
           return;
       }
-      console.log(m.sms.id('6387650b8e9e19ba61a80d95'));
+      
       if(m.sms && m.sms.length > 0) {
           const thisSM = m.sms.id(req.params.smId);
           if(!thisSM) {
@@ -63,7 +63,7 @@ const smReadOne = (req, res) => {
               },
               sm: thisSM
           };
-          sendJSONResponse(res, 200, thisSM);
+          sendJSONResponse(res, 200, response);
       } else {
           sendJSONResponse(res, 400, {"message":"no sm found"});
       }
