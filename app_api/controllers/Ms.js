@@ -74,8 +74,15 @@ const mUpdateOne = (req, res) => {
         doUpdateM(req, res, m);
      });
 };
+
 const mDeleteOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"m deleted"});
+    if(!req.params.mId) {sendJSONResponse(res, 400, {"message":"m id required"}); return;}
+    M
+     .findByIdAndRemove(req.params.mId)
+     .exec((err, m) => {
+        if(err) {sendJSONResponse(res, 404, err); return;}
+        sendJSONResponse(res, 204, null);
+     });
 };
 
 

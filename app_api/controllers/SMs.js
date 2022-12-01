@@ -116,7 +116,20 @@ const smUpdateOne = (req, res) => {
     });
 };
 const smDeleteOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"sm deleted"});
+    if(!req.params.mId || !req.params.smId) {sendJSONResponse(res, 400, {"message":"both url params required"});return;}
+    M
+    .findById(req.params.mId)
+    .select('sms')
+    .exec((err, m)=>{
+      if(!m) {sendJSONResponse(res, 404, {"message":"m id incorrect"});return;}
+      if(err) {sendJSONResponse(res, 404, err);return;}
+      if(!m.sms || m.sms.length == 0) {sendJSONResponse(res, 404, {"message":"no sms to delete"}); return}
+      m.sms.id(req.params.smId).remove();
+      m.save(err => {
+        if(err) {sendJSONResponse(res, 404, err);return;}
+        sendJSONResponse(res, 404, null);
+      })
+    });
 };
 
 module.exports = {
