@@ -59,13 +59,15 @@ const readMs = (req, res) => {
 //instance operations
 const renderM = (req, res, m) => {
     res.render('m-details', {
-        title: 'Details of M',
+        title: m.a1,
         pageHeader: {
-            title: 'M',
+            title: m.a1,
             strapline: ''
         },
-        sideBar: '| This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company.', 
-        callToAction: 'If you\'ve used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.',
+        sideBar: {
+            context: 'This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company.',
+            callToAction: 'If you\'ve used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.',
+        }, 
         m,
         
     });
