@@ -9,7 +9,8 @@ const sendJSONResponse = (res, code, content) => {
 
 //list operations
 const mCreateOne = (req, res) => {
-    if(!req.body.a1) {sendJSONResponse(res, 400, {"message":"all fields required"}); return}
+    if(!req.body.a1 || !req.body.a2 || !req.body.a3 || !req.body.a4 || !req.body.a5 || !req.body.facilities)
+      {sendJSONResponse(res, 400, {"message":"all fields required"}); return}
     const formM = {
         a1: req.body.a1,
         a2: parseInt(req.body.a2),
@@ -21,8 +22,8 @@ const mCreateOne = (req, res) => {
     M
      .create(formM, (err, dbM) => {
         if(err) {sendJSONResponse(res, 400, err); return}
-        if(!dbM) {sendJSONResponse(res, 404, {"message":"ms not found"}); return}
-        sendJSONResponse(res, 200, dbM);
+        if(!dbM) {sendJSONResponse(res, 404, {"message":"m could not be saved"}); return}
+        sendJSONResponse(res, 201, dbM);
      })
 };
 
