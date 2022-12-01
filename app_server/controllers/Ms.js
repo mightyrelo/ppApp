@@ -1,11 +1,11 @@
 const request = require('request');
 
 const apiOptions = {
-    server: 'http://localhost:3000'
+    server: 'http://localhost:3000/api/'
 };
 
 if(process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://ppApp.herokuapp.com';
+    apiOptions.server = 'https://ppApp.herokuapp.com/api/';
 }
 
 //list operations
@@ -43,7 +43,7 @@ const renderMList = (req, res, ms) => {
 
 };
 const readMs = (req, res) => {
-    const path = '/api/ms';
+    const path = 'ms';
     const requestOptions = {
         url: `${apiOptions.server}${path}`,
         method: 'GET',
@@ -57,7 +57,7 @@ const readMs = (req, res) => {
 };
 
 //instance operations
-const readM = (req, res) => {
+const renderM = (req, res, m) => {
     res.render('m-details', {
         title: 'Details of M',
         pageHeader: {
@@ -66,29 +66,25 @@ const readM = (req, res) => {
         },
         sideBar: '| This Life Area is on ppApp because it helps describe a person from a certain perspective so that potential employers can know if person is right fit for the company.', 
         callToAction: 'If you\'ve used ppApp to secure a position in the past, help others who were once like you by helping them get organized in search of a job of their dreams.',
-        m: {
-            a1: 'a1',
-            a2: 3,
-            a3: 'a3',
-            a4: 'a4',
-            a5: 'a5',
-            facilities: ['aa1', 'aa2', 'aa3'],
-            duration: {
-                start: '2022 January',
-                end: '2022 September'
-            },
-            sms: [{
-                b1: 'placeholder',
-                b2: 9,
-                b3: Date.now()
-            }, {
-                b1: 'another placeholder',
-                b2: 3,
-                b3: Date.now()
-            }]
-        }
-
+        m,
+        
     });
+}
+const readM = (req, res) => {
+    const path = `ms/${req.params.mId}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {},
+    };
+    request(requestOptions, (err, {statusCode}, m) => {
+        let data;
+        if(statusCode === 200) {
+            data = m;
+        } 
+        renderM(req, res, data);
+    })
+   
 };
 const updateM = (req, res) => {
     res.render('m-update', {
