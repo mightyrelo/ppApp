@@ -5,7 +5,7 @@ const apiOptions = {
 };
 
 if(process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://ppApp.herokuapp.com/api/';
+    apiOptions.server = 'https://ppapp.herokuapp.com/api/';
 }
 
 const showError = (req, res, code) => {
