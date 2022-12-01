@@ -1,3 +1,13 @@
+const request = require("request");
+
+const apiOptions = {
+    server: 'http://localhost:3000/api/'
+};
+
+if(process.env.NODE_ENV === 'production') {
+    apiOptions.server = 'https://ppApp.herokuapp.com/api/';
+}
+
 const showError = (req, res, statusCode) => {
     let titl = '';
     let content = '';
@@ -24,8 +34,22 @@ const showError = (req, res, statusCode) => {
 
 //submodel list operations
 const createSM = (req, res) => {
-    res.render('sm-form', {
-        title: 'Create of SM'
+    const path = `ms/${req.params.mId}/sms`;
+    const formSM = {
+        b1: req.body.b1,
+        b2: req.body.b2
+    };
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'POST',
+        json: formSM
+    };
+    request(requestOptions, (err, {statusCode}, sm) => {
+        if(statusCode === 201) {
+            res.redirect(`/ms/${req.params.mId}`);
+        } else {
+            showError(req, res, statusCode);
+        }
     });
 };
 

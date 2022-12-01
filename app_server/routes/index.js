@@ -17,7 +17,7 @@ router
 
 router
   .route('/ms/new')
-  .get(mCtrl.openMForm)
+  .get(mCtrl.openMForm);
 //instances
 router
   .route('/ms/:mId')
@@ -34,6 +34,7 @@ router
 router
   .route('/ms/:mId/sms/new')
   .get(smCtrl.openSMForm)
+  .post(smCtrl.createSM);
 //instance
 router
   .route('/ms/:mId/sms/:smId')

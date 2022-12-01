@@ -4,17 +4,21 @@ extends content-layout
 block main_content
   .row.banner 
     .col-12 
-      h1 Life Area 
+      h1 #{pageHeader.title}  
         small &nbsp;  
   .row 
     .col-12.col-md-8 
-      form(action=`/ms/sms`, method="post", role="form")
+      form(action='', method="post", role="form")
         -  if(error == 'val')
              .alert.alert-danger(role="alert") All fields required, please try again.
         .form-group.row 
-          label.col-10.col-sm-2.col-form-label(for="name") Name
+          label.col-10.col-sm-2.col-form-label(for="b1") b1
           .col-12.col-sm-5 
-            input#name.form-control(name="name")
+            input#name.form-control(name="b1")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="b2") b2
+          .col-12.col-sm-5 
+            input#name.form-control(name="b2")
           .col-sm-10 
             button.btn.btn-primary.float-left Create SM
     .col-12.col-md-4 
