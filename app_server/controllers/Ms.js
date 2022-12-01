@@ -15,7 +15,6 @@ const showError = (req, res, code) => {
         titl = '404, page not found';
         content = 'Oh flip, looks like you can\'t find this page. Sorry.'
     } else {
-        console.log('hi dear');
         titl = `${code}, something's gone wrong`;
         content = 'Something, somewhere has just gone a little bit wrong.'
     }
@@ -112,8 +111,11 @@ const readM = (req, res) => {
         let data;
         if(statusCode === 200) {
             data = m;
-        } 
-        renderM(req, res, data);
+            renderM(req, res, data);
+        } else {
+            showError(req, res, statusCode)
+        }
+      
     })
    
 };
