@@ -37,7 +37,7 @@ const renderMList = (req, res, ms) => {
             strapline: 'Create and update personal profile for work applications.'
         },
         sideBar: 'Looking to create or update your personal profile for an upcoming job application? ppApp helps you create a profile with a professional appeal and helps you secure that position you\'ve been aiming at. Let ppApp set you apart from competitors and help you prepare for that interview and keep track of your skills, qualifications and experiences as and when you aquire them. Good Luck, the ppApp is With You! Nothing gets you more prepared for a coding interview than a properly packaged personal profile.',
-        Ms: [],
+        Ms: ms,
         message
     });
 
@@ -52,7 +52,7 @@ const readMs = (req, res) => {
     request(requestOptions, (err, {statusCode}, ms) => {
         let data = [];
         if(statusCode === 200) {data = ms;} 
-        renderMList(req, res, data);
+        renderMList(req, res, ms);
     });
 };
 
