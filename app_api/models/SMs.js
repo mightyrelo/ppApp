@@ -10,6 +10,6 @@ const SMSchema = mongoose.Schema({
     b2: Number,
     b3: {
         type: Date,
-        'default': Date.now()
+        'default': Date.now
     }
 });

@@ -39,7 +39,8 @@ block main_content
               each sm in m.sms 
                 .row.review 
                   .col-12.no-gutters.review-header 
-                    small.reviewTimestamp #{sm.b3}
+                    small.reviewTimestamp 
+                      +formatDate(sm.b3)
                     small.reviewTimestamp #{sm.b2}
                   .col-12 
                     p= sm.b1
