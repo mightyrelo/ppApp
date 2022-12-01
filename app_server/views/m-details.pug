@@ -36,15 +36,12 @@ block main_content
             .card-block 
               a.btn.btn-primary.float-right(href='/ms/mId/sms/new') Add SM 
               h2.card-title SMs 
-              .row.review 
-                .col-12.no-gutters.review-header 
-                  small.review Author Y Z
-                .col-12 
-                  p Something about something 
-              .row.review 
-                .col-12.no-gutters.review-header 
-                  small.review Author Y Z
-                .col-12 
-                  p Something about something 
+              each sm in m.sms 
+                .row.review 
+                  .col-12.no-gutters.review-header 
+                    small.reviewTimestamp #{sm.b3}
+                    small.reviewTimestamp #{sm.b2}
+                  .col-12 
+                    p= sm.b1
 
 
