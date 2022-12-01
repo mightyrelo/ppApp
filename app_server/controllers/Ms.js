@@ -48,7 +48,6 @@ const openMForm = (req, res) => {
     });
 }
 const createM = (req, res) => {
-    console.log('good ev');
     const path = 'ms';
     const formM = {
         a1: req.body.a1,

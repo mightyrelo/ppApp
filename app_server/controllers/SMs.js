@@ -33,6 +33,42 @@ const showError = (req, res, statusCode) => {
 }
 
 //submodel list operations
+const openSMForm = (req, res) => {
+    getMInfo(req, res, (req, res, m) => {
+        renderSMForm(req, res, m);
+    });   
+};
+const getMInfo = (req, res, callback) => {
+    const path = `/ms/${req.params.mId}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {}
+    };
+    request(requestOptions, (err, {statusCode}, m) => {
+        if(statusCode === 200) {
+            callback(req, res, m);
+        } else {
+            showError(req, res, statusCode);
+        }
+    })
+};
+const renderSMForm = (req, res, m) => {
+    res.render('sm-form', {
+        title: `sm for ${m.a1}`,
+        pageHeader: {
+            title: `Create sm for ${m.a1}`,
+            strapline: ''
+        },
+        sideBar: {
+            content: '',
+            callToAction: 'SM is the generic database model. There are three end point levels - collection, document and subdocument. For each level we define appropriate crud operations'
+        }
+    });
+};
+
+
+
 const createSM = (req, res) => {
     const path = `ms/${req.params.mId}/sms`;
     const formSM = {
@@ -78,20 +114,6 @@ const deleteSM = (req, res) => {
     });
 };
 
-const openSMForm = (req, res) => {
-    res.render('sm-form', {
-        title: 'Create SM',
-        pageHeader: {
-            title: 'Create Instance of SM',
-            strapline: ''
-        },
-        sideBar: {
-            content: 'SM is the generic database model.',
-            callToAction: 'There are three end point levels - collection, document and subdocument. For each level we define appropriate crud operations'
-        }
-    });
-   
-};
 
 module.exports = {
     createSM,
@@ -99,5 +121,5 @@ module.exports = {
     readSM,
     updateSM,
     deleteSM,
-    openSMForm
+    openSMForm,
 };
