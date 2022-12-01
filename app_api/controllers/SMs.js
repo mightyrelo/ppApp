@@ -127,7 +127,7 @@ const smDeleteOne = (req, res) => {
       m.sms.id(req.params.smId).remove();
       m.save(err => {
         if(err) {sendJSONResponse(res, 404, err);return;}
-        sendJSONResponse(res, 404, null);
+        sendJSONResponse(res, 204, null);
       })
     });
 };

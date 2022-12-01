@@ -45,8 +45,10 @@ router
 router
   .route('/ms/:mId/sms/:smId')
   .get(smCtrl.readSM)
-  .put(smCtrl.updateSM)
-  .delete(smCtrl.deleteSM);
+  .put(smCtrl.updateSM);
+router
+  .route('/ms/:mId/sms/:smId/del')
+  .get(smCtrl.deleteSM);
 
 
 

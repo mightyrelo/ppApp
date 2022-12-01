@@ -8,7 +8,7 @@ if(process.env.NODE_ENV === 'production') {
     apiOptions.server = 'https://ppApp.herokuapp.com/api/';
 }
 
-const showError = (req, res, statusCode) => {
+const showError = (req, res, code) => {
     let titl = '';
     let content = '';
     if(code === 404) {
@@ -126,7 +126,7 @@ const doDeleteSM = (req, res, m) => {
     };
     request(requestOptions, (err, {statusCode}, body) => {
         if(statusCode === 204) {
-            res.redirect(`/ms/${req.params.mId}/sms`);
+            res.redirect(`/ms/${req.params.mId}`);
         } else {
             showError(req, res, statusCode);
         }

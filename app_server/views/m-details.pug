@@ -42,6 +42,8 @@ block main_content
                     small.reviewTimestamp 
                       +formatDate(sm.b3)
                     small.reviewTimestamp #{sm.b2}
+                    small 
+                      a.float-right(href=`/ms/${m._id}/sms/${sm._id}/del`) delete
                   .col-12 
                     p= sm.b1
 
