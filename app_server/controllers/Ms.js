@@ -43,10 +43,12 @@ const openMForm = (req, res) => {
         sideBar: {
             content: 'M is the generic database model.',
             callToAction: 'There are three end point levels - collection, document and subdocument. For each level we define appropriate crud operations'
-        }
+        },
+        error: req.query.err
     });
 }
 const createM = (req, res) => {
+    console.log('good ev');
     const path = 'ms';
     const formM = {
         a1: req.body.a1,
@@ -61,10 +63,11 @@ const createM = (req, res) => {
         method: 'POST',
         json: formM
     };
-    request(requestOptions, (err, {statusCode}, dbM) => {
+    request(requestOptions, (err, {statusCode}, {name}) => {
         if(statusCode === 201) {
             res.redirect('/ms');
-
+        } else if(statusCode === 400) {
+            res.redirect('/ms/new?err=val');
         } else {
             showError(req, res, statusCode);
         }
