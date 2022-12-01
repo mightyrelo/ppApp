@@ -24,8 +24,7 @@ const smReadAll = (req, res) => {
         const response = {
             m: {
                 a1: m.a1,
-                id: m._id
-
+                id: req.params.mId
             },
             sms: smS
         };
@@ -34,40 +33,40 @@ const smReadAll = (req, res) => {
 
 };
 
-const getSM = (req, res, m) => {
-    for(let i = 0; i < m.sms.length; i++) {
-        console.log(m.sms[i]);
-    }
-}
-
 
 
 //submodel instance operations
 const smReadOne = (req, res) => {
-    if(!req.params.mId || !req.params.smId) {sendJSONResponse(res, 404, {"message":"both parameters required"}); return}
     M
-     .findById(req.params.mId)
-     .select('a1 sms')
-     .exec((err, m) => {
-        if(err) {sendJSONResponse(res, 400, err); return}
-        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"}); return}
-        if(!m.sms || m.sms.length === 0 ) {sendJSONResponse(res, 404, {"message":"no sms found"}); return}
-        //console.log(m.sms);
-        const sm = m.sms.id(req.params.smId); 
-        //console.log(sm); 
-        for(let i = 0; i < m.sms.length; i++) {
-            console.log(sm.sms._id, req.params.smId);
-        } 
-        //console.log(m);
-        const response = {
-            m: {
-               a1: m.a1,
-               id: m._id
-            },
-            sm
-        };
-        sendJSONResponse(res, 200, response);
-     })
+    .findById(req.params.mId)
+    .select('name quotations')
+    .exec((err, m)=>{
+      if(!m) {
+          sendJSONResponse(res, 404, {"message":"m id incorrect"});
+          return;
+      } else if(err) {
+          sendJSONResponse(res, 404, err);
+          return;
+      }
+      console.log(m.sms);
+      if(m.sms && m.sms.length > 0) {
+          const thisSM = m.sms.id(req.params.smId);
+          if(!thisSM) {
+              sendJSONResponse(res, 404, {"message":"sm id incorrect"});
+              return;
+          }
+          const response = {
+              m: {
+                  a1: m.a1,
+                  id: req.params.mId
+              },
+              thisSM
+          };
+          sendJSONResponse(res, 200, response);
+      } else {
+          sendJSONResponse(res, 400, {"message":"no sm found"});
+      }
+    });
 };
 
   
