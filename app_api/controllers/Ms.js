@@ -49,24 +49,29 @@ const mReadOne = (req, res) => {
         sendJSONResponse(res, 200, m);
      });
 };
+
+const doUpdateM = (req, res, m) => {
+    m.a1 = req.body.a1;
+    m.a2 = parseInt(req.body.a2);
+    m.a3 = req.body.a3;
+    m.a4 = req.body.a4;
+    m.a5 = req.body.a5;
+    m.facilities = req.body.a1.split(',');
+    m.save((err, savedM)=>{
+        if(err) {sendJSONResponse(res, 400, err);}
+        if(!savedM) {sendJSONResponse(res, 404, {"message":"m could not be updated"});}
+        sendJSONResponse(res, 200, savedM);            
+    })
+}
+
 const mUpdateOne = (req, res) => {
     if(!req.params.mId) {sendJSONResponse(res, 400, {"message":"m id required"}); return}
     M
      .findById(req.params.mId)
      .exec((err, m)=> {
-        if(err) {sendJSONResponse(res, 400, err);}
-        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
-        m.a1 = req.body.a1;
-        m.a2 = parseInt(req.body.a2);
-        m.a3 = req.body.a3;
-        m.a4 = req.body.a4;
-        m.a5 = req.body.a5;
-        m.facilities = req.body.a1.split(',');
-        m.save((err, savedM)=>{
-            if(err) {sendJSONResponse(res, 400, err);}
-            if(!savedM) {sendJSONResponse(res, 404, {"message":"m could not be updated"});}
-            sendJSONResponse(res, 200, savedM);            
-        })
+        if(err) {sendJSONResponse(res, 400, err); return}
+        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"}); return}
+        doUpdateM(req, res, m);
      });
 };
 const mDeleteOne = (req, res) => {
