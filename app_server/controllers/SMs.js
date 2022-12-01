@@ -63,7 +63,8 @@ const renderSMForm = (req, res, m) => {
         sideBar: {
             content: '',
             callToAction: 'SM is the generic database model. There are three end point levels - collection, document and subdocument. For each level we define appropriate crud operations'
-        }
+        },
+        error: req.query.err
     });
 };
 
@@ -83,7 +84,10 @@ const createSM = (req, res) => {
     request(requestOptions, (err, {statusCode}, sm) => {
         if(statusCode === 201) {
             res.redirect(`/ms/${req.params.mId}`);
-        } else {
+        } else if(statusCode === 400) {
+            res.redirect(`/ms/${req.params.mId}/sms/new?err=val`);
+        } 
+        else {
             showError(req, res, statusCode);
         }
     });
