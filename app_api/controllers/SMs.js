@@ -92,15 +92,28 @@ const smReadOne = (req, res) => {
     });
 };
 
-  
-
-  
-  
-   
-
+const doUpdateSM = (req, res, m, sm) => {
+    sm.b1 = req.body.b1;
+    sm.b2 = parseInt(req.body.b2);
+    m.save((err, savedM)=>{
+        if(err) {sendJSONResponse(res, 400, err);}
+        if(!savedM) {sendJSONResponse(res, 404, {"message":"m could not be updated"});}
+        sendJSONResponse(res, 200, savedM);            
+    })
+}
 
 const smUpdateOne = (req, res) => {
-    sendJSONResponse(res, 200, {"message":"sm updated"});
+    if(!req.params.mId || !req.params.smId) {sendJSONResponse(res, 400, {"message":"both url params required"});return;}
+    M
+    .findById(req.params.mId)
+    .select('a1 sms')
+    .exec((err, m)=>{
+      if(!m) {sendJSONResponse(res, 404, {"message":"m id incorrect"});return;}
+      if(err) {sendJSONResponse(res, 404, err);return;}
+      if(!m.sms || m.sms.length == 0) {sendJSONResponse(res, 404, {"message":"no sms to update"}); return}
+      const thisSM = m.sms.id(req.params.smId)
+      doUpdateSM(req, res, m, thisSM);
+    });
 };
 const smDeleteOne = (req, res) => {
     sendJSONResponse(res, 200, {"message":"sm deleted"});
