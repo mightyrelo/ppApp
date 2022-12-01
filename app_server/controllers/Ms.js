@@ -33,7 +33,7 @@ const showError = (req, res, code) => {
 
 
 //list operations
-const renderCreateMPage = (req, res) => {
+const openMForm = (req, res) => {
     res.render('m-form', {
         title: 'Create M',
         pageHeader: {
@@ -167,16 +167,7 @@ const deleteM = (req, res) => {
     });
 };
 
-const openMForm = (req, res) => {
-    res.render('m-form', {
-        title: 'Create M',
-        pageHeader: {
-            title: 'Create Instance of M',
-            strapline: ''
-        },
-        sideBar: 'The hood doesn\'t need more hardwares, it\'s the software that\'s hard to find. '
-    });
-}
+
 
 
 module.exports = {

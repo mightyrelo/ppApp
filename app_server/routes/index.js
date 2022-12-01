@@ -33,13 +33,15 @@ router
   .post(smCtrl.createSM);
 router
   .route('/ms/:mId/sms/new')
-  .get(smCtrl.createSM)
+  .get(smCtrl.openSMForm)
 //instance
 router
   .route('/ms/:mId/sms/:smId')
   .get(smCtrl.readSM)
   .put(smCtrl.updateSM)
   .delete(smCtrl.deleteSM);
+
+
 
 
 module.exports = router;

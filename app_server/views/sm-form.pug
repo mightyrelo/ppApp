@@ -5,10 +5,10 @@ block main_content
   .row.banner 
     .col-12 
       h1 Life Area 
-        small &nbsp; Things are what they used to be. Now your profile must be accessible online 
+        small &nbsp;  
   .row 
     .col-12.col-md-8 
-      form(action=`/ms`, method="post", role="form")
+      form(action=`/ms/sms`, method="post", role="form")
         -  if(error == 'val')
              .alert.alert-danger(role="alert") All fields required, please try again.
         .form-group.row 
@@ -16,5 +16,5 @@ block main_content
           .col-12.col-sm-5 
             input#name.form-control(name="name")
           .col-sm-10 
-            button.btn.btn-primary.float-left Create Customer
+            button.btn.btn-primary.float-left Create SM
     .col-12.col-md-4 

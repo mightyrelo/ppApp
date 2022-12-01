@@ -34,7 +34,7 @@ block main_content
         .col-12 
           .card-primary.review-card 
             .card-block 
-              a.btn.btn-primary.float-right(href='/ms/mId/sms/new') Add SM 
+              a.btn.btn-primary.float-right(href=`/ms/${m._id}/sms/new`) Add SM 
               h2.card-title SMs 
               each sm in m.sms 
                 .row.review 
