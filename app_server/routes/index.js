@@ -14,6 +14,10 @@ router
   .route('/ms')
   .get(mCtrl.readMs)
   .post(mCtrl.createM);
+
+router
+  .route('/ms/new')
+  .get(mCtrl.openMForm)
 //instances
 router
   .route('/ms/:mId')

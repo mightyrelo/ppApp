@@ -33,7 +33,7 @@ const showError = (req, res, code) => {
 
 
 //list operations
-const createM = (req, res) => {
+const renderCreateMPage = (req, res) => {
     res.render('m-form', {
         title: 'Create M',
         pageHeader: {
@@ -42,6 +42,31 @@ const createM = (req, res) => {
         },
         sideBar: 'The hood doesn\'t need more hardwares, it\'s the software that\'s hard to find. '
     });
+}
+const createM = (req, res) => {
+    const path = 'ms';
+    const formM = {
+        a1: req.body.a1,
+        a2: req.body.a2,
+        a3: req.body.a3,
+        a4: req.body.a4,
+        a5: req.body.a5,
+        facilities: req.body.facilities,
+    };
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'POST',
+        json: formM
+    };
+    request(requestOptions, (err, {statusCode}, dbM) => {
+        if(statusCode === 201) {
+            res.redirect('/ms');
+
+        } else {
+            showError(req, res, statusCode);
+        }
+    });
+   
 };
 
 const renderMList = (req, res, ms) => {
@@ -142,6 +167,17 @@ const deleteM = (req, res) => {
     });
 };
 
+const openMForm = (req, res) => {
+    res.render('m-form', {
+        title: 'Create M',
+        pageHeader: {
+            title: 'Create Instance of M',
+            strapline: ''
+        },
+        sideBar: 'The hood doesn\'t need more hardwares, it\'s the software that\'s hard to find. '
+    });
+}
+
 
 module.exports = {
     createM,
@@ -149,4 +185,5 @@ module.exports = {
     readM,
     updateM,
     deleteM,
+    openMForm
 };
