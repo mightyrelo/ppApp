@@ -1,3 +1,13 @@
+const request = require('request');
+
+const apiOptions = {
+    server: 'http://localhost:3000'
+};
+
+if(process.env.NODE_ENV === 'production') {
+    apiOptions.server = 'https://ppApp.herokuapp.com';
+}
+
 //list operations
 const createM = (req, res) => {
     res.render('m-form', {
@@ -10,7 +20,7 @@ const createM = (req, res) => {
     });
 };
 
-const readMs = (req, res) => {
+const renderMList = (req, res, ms) => {
     res.render('m-list', {
         title: 'List of Ms',
         pageHeader: {
@@ -18,25 +28,21 @@ const readMs = (req, res) => {
             strapline: 'Create and update personal profile for work applications.'
         },
         sideBar: 'Looking to create or update your personal profile for an upcoming job application? ppApp helps you create a profile with a professional appeal and helps you secure that position you\'ve been aiming at. Let ppApp set you apart from competitors and help you prepare for that interview and keep track of your skills, qualifications and experiences as and when you aquire them. Good Luck, the ppApp is With You! Nothing gets you more prepared for a coding interview than a properly packaged personal profile.',
-        Ms: [{
-            a1: 'a1',
-            a2: 5,
-            a3: 'a3',
-            a4: 'a4',
-            facilities: ['aa1', 'aa2', 'aa3']
-        }, {
-            a1: 'b1',
-            a2: 3,
-            a3: 'b3',
-            a4: 'b4',
-            facilities: ['bb1', 'bb2', 'bb3']
-        }, {
-            a1: 'c1',
-            a2: 2,
-            a3: 'c3',
-            a4: 'c4',
-            facilities: ['cc1', 'cc2', 'cc3']
-        }]
+        Ms: ms
+    });
+
+};
+const readMs = (req, res) => {
+    const path = '/api/ms';
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {},
+    };
+    request(requestOptions, (err, {status}, ms) => {
+        if(status === 200) {
+            renderMList(req, res, ms);
+        } else {}
     });
 };
 
