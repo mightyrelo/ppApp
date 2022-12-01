@@ -8,6 +8,31 @@ if(process.env.NODE_ENV === 'production') {
     apiOptions.server = 'https://ppApp.herokuapp.com/api/';
 }
 
+const showError = (req, res, code) => {
+    let titl = '';
+    let content = '';
+    if(code === 404) {
+        titl = '404, page not found';
+        content = 'Oh flip, looks like you can\'t find this page. Sorry.'
+    } else {
+        console.log('hi dear');
+        titl = `${code}, something's gone wrong`;
+        content = 'Something, somewhere has just gone a little bit wrong.'
+    }
+    res
+      .status(code)
+      .render('generic-text', {
+        title: titl,
+        pageHeader: {
+            title: titl,
+            strapline: ''
+        },
+        sideBar: '',
+        content
+      });
+}
+
+
 //list operations
 const createM = (req, res) => {
     res.render('m-form', {
@@ -51,8 +76,12 @@ const readMs = (req, res) => {
     };
     request(requestOptions, (err, {statusCode}, ms) => {
         let data = [];
-        if(statusCode === 200) {data = ms;} 
-        renderMList(req, res, ms);
+        if(statusCode === 200) {
+            data = ms;
+            renderMList(req, res, ms);
+        } else {
+            showError(req, res, statusCode);
+        }
     });
 };
 
