@@ -17,6 +17,7 @@ const smReadAll = (req, res) => {
     if(!req.params.mId) {sendJSONResponse(res, 404, {"message":"m id parameter required"})}
     M
      .findById(req.params.mId)
+     .select('a1 sms')
      .exec((err, m)=> {
         if(err) {sendJSONResponse(res, 400, err);}
         if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
@@ -39,7 +40,7 @@ const smReadAll = (req, res) => {
 const smReadOne = (req, res) => {
     M
     .findById(req.params.mId)
-    .select('name quotations')
+    .select('a1 sms')
     .exec((err, m)=>{
       if(!m) {
           sendJSONResponse(res, 404, {"message":"m id incorrect"});
@@ -48,7 +49,7 @@ const smReadOne = (req, res) => {
           sendJSONResponse(res, 404, err);
           return;
       }
-      console.log(m.sms);
+      console.log(m.sms.id('6387650b8e9e19ba61a80d95'));
       if(m.sms && m.sms.length > 0) {
           const thisSM = m.sms.id(req.params.smId);
           if(!thisSM) {
@@ -60,9 +61,9 @@ const smReadOne = (req, res) => {
                   a1: m.a1,
                   id: req.params.mId
               },
-              thisSM
+              sm: thisSM
           };
-          sendJSONResponse(res, 200, response);
+          sendJSONResponse(res, 200, thisSM);
       } else {
           sendJSONResponse(res, 400, {"message":"no sm found"});
       }
