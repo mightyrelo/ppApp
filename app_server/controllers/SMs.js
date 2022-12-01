@@ -116,10 +116,27 @@ const updateSM = (req, res) => {
         title: 'Update SM'
     });
 };
-const deleteSM = (req, res) => {
-    res.render('sm-details', {
-        title: 'Delete SM'
+
+const doDeleteSM = (req, res, m) => {
+    const path = `/ms/${req.params.mId}/sms/${req.params.smId}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'DELETE',
+        json: {}
+    };
+    request(requestOptions, (err, {statusCode}, body) => {
+        if(statusCode === 204) {
+            res.redirect(`/ms/${req.params.mId}/sms`);
+        } else {
+            showError(req, res, statusCode);
+        }
     });
+}
+const deleteSM = (req, res) => {
+    getMInfo(req, res, (req, res, m) => {
+        doDeleteSM(req, res, m);
+    });
+ 
 };
 
 
