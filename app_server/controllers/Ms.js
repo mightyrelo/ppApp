@@ -49,28 +49,33 @@ const openMForm = (req, res) => {
 }
 const createM = (req, res) => {
     const path = 'ms';
-    const formM = {
-        a1: req.body.a1,
-        a2: req.body.a2,
-        a3: req.body.a3,
-        a4: req.body.a4,
-        a5: req.body.a5,
-        facilities: req.body.facilities,
-    };
-    const requestOptions = {
-        url: `${apiOptions.server}${path}`,
-        method: 'POST',
-        json: formM
-    };
-    request(requestOptions, (err, {statusCode}, {name}) => {
-        if(statusCode === 201) {
-            res.redirect('/ms');
-        } else if(statusCode === 400) {
-            res.redirect('/ms/new?err=val');
-        } else {
-            showError(req, res, statusCode);
-        }
-    });
+    if(!req.body.a1 ||!req.body.a2 ||!req.body.a3 ||!req.body.a4 ||
+       !req.body.a5 ||!req.body.facilities) {
+        res.redirect('/ms/new?err=val');
+    } else {
+        const formM = {
+            a1: req.body.a1,
+            a2: req.body.a2,
+            a3: req.body.a3,
+            a4: req.body.a4,
+            a5: req.body.a5,
+            facilities: req.body.facilities,
+        };
+        const requestOptions = {
+            url: `${apiOptions.server}${path}`,
+            method: 'POST',
+            json: formM
+        };
+        request(requestOptions, (err, {statusCode}, {name}) => {
+            if(statusCode === 201) {
+                res.redirect('/ms');
+            } else if(statusCode === 400) {
+                res.redirect('/ms/new?err=val');return;
+            } else {
+                showError(req, res, statusCode);
+            }
+        });    
+    }
    
 };
 

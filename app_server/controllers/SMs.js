@@ -72,25 +72,29 @@ const renderSMForm = (req, res, m) => {
 
 const createSM = (req, res) => {
     const path = `ms/${req.params.mId}/sms`;
-    const formSM = {
-        b1: req.body.b1,
-        b2: req.body.b2
-    };
-    const requestOptions = {
-        url: `${apiOptions.server}${path}`,
-        method: 'POST',
-        json: formSM
-    };
-    request(requestOptions, (err, {statusCode}, sm) => {
-        if(statusCode === 201) {
-            res.redirect(`/ms/${req.params.mId}`);
-        } else if(statusCode === 400) {
-            res.redirect(`/ms/${req.params.mId}/sms/new?err=val`);
-        } 
-        else {
-            showError(req, res, statusCode);
-        }
-    });
+    if(!req.body.b1 || !req.body.b2) {
+        res.redirect(`/ms/${req.params.mId}/sms/new?err=val`);
+    } else {
+        const formSM = {
+            b1: req.body.b1,
+            b2: req.body.b2
+        };
+        const requestOptions = {
+            url: `${apiOptions.server}${path}`,
+            method: 'POST',
+            json: formSM
+        };
+        request(requestOptions, (err, {statusCode}, sm) => {
+            if(statusCode === 201) {
+                res.redirect(`/ms/${req.params.mId}`);
+            } else if(statusCode === 400) {
+                res.redirect(`/ms/${req.params.mId}/sms/new?err=val`);
+            } 
+            else {
+                showError(req, res, statusCode);
+            }
+        });    
+    }
 };
 
 const readSMs = (req, res) => {
