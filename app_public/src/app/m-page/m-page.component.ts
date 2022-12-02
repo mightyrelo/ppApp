@@ -13,8 +13,8 @@ export class MPageComponent implements OnInit {
       strapline: 'strap'
     },
     sideBar: {
-      main: 'main',
-      sub: 'support'
+      main: 'main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main ',
+      sub: 'support support support support support support support support support support support support support support support support support support support support support support support support support support support support support support support support support support support '
     }
   };
 

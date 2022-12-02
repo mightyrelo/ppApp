@@ -1,25 +1,27 @@
-<div *ngFor="let m of ms" class="card">
-   <div class="card-block">
+<div>
+  <div class="error"></div>
+  <div *ngFor="let m of ms" class="card">
+    <div class="card-block">
+      <h4>
+        <a href="/ms/{{m._id}}">{{m.a1}}</a>
+        <small>&nbsp;
+           <i class="fa{{m.a2 < 1 ? 'r' : 's'}} fa-star"></i>
+           <i class="fa{{m.a2 < 2 ? 'r' : 's'}} fa-star"></i>
+           <i class="fa{{m.a2 < 3 ? 'r' : 's'}} fa-star"></i>
+           <i class="fa{{m.a2 < 4 ? 'r' : 's'}} fa-star"></i>
+           <i class="fa{{m.a2 < 5 ? 'r' : 's'}} fa-star"></i>
+       </small>
+       <span class="badge badge-pill badge-default float-right">{{m.a3 | appendS}}</span>
+     </h4>
+     <p class="address">{{m.a4}}</p>
+     <div class="facilities">
+        <span *ngFor="let facility of m.facilities" class="badge badge-pill">{{facility}}</span>
+     </div>
      <h4>
-       <a href="/ms/{{m._id}}">{{m.a1}}</a>
-       <small>&nbsp;
-          <i class="fa{{m.a2 < 1 ? 'r' : 's'}} fa-star"></i>
-          <i class="fa{{m.a2 < 2 ? 'r' : 's'}} fa-star"></i>
-          <i class="fa{{m.a2 < 3 ? 'r' : 's'}} fa-star"></i>
-          <i class="fa{{m.a2 < 4 ? 'r' : 's'}} fa-star"></i>
-          <i class="fa{{m.a2 < 5 ? 'r' : 's'}} fa-star"></i>
+       <small>
+         <a class="float-right" href="/ms/{{m._id}}/del">delete </a>
       </small>
-      <span class="badge badge-pill badge-default float-right">{{m.a3 | appendS}}</span>
-    </h4>
-    <p class="address">{{m.a4}}</p>
-    <div class="facilities">
-       <span *ngFor="let facility of m.facilities" class="badge badge-pill">{{facility}}</span>
-    </div>
-    <h4>
-      <small>
-        <a class="float-right" href="/ms/{{m._id}}/del">delete </a>
-     </small>
-    </h4>
-  </div>
+     </h4>
+   </div>
+ </div> 
 </div>
-

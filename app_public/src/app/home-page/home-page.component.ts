@@ -7,6 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
+  public pageContent = {
+    header: {
+      title: 'Home',
+      strapline: 'This is the home page'
+    },
+    sideBar: {
+      main: 'Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app ',
+      sub: 'Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app '
+    }
+  };
+
+
   constructor() { }
 
   ngOnInit() {

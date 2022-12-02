@@ -12,6 +12,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MPageComponent } from './m-page/m-page.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { HomeContentComponent } from './home-content/home-content.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     HomePageComponent,
     MPageComponent,
     PageHeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+    HomeContentComponent
   ],
   imports: [
     BrowserModule,

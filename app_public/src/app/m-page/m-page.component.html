@@ -1,10 +1,5 @@
 <app-page-header [content]="pageContent.header" ></app-page-header>
 <div class="row">
-  <div class="col-12 col-md-8">
-     <div class="error"></div>
-     <app-m-list></app-m-list>
-  </div>
-  <div class="col-12 col-md-4">
-    <app-side-bar [content]="pageContent.sideBar"></app-side-bar>
-  </div>
+  <app-m-list  class="col-12 col-md-8"></app-m-list>
+  <app-side-bar class="col-12 col-md-4" [content]="pageContent.sideBar"></app-side-bar>
 </div>
