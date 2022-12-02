@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MDataService } from '../m-data.service';
 
 export class M {
   _id: String;
@@ -17,31 +18,19 @@ export class M {
 })
 export class MListComponent implements OnInit {
 
+  public ms: M[];
   
-  constructor() { }
+  constructor(
+    private mDataService: MDataService
+  ) { }
 
-  ms: M[] = [{
-    _id: '638829265ee405f5ce4d01c1',
-    a1: 'a1',
-    a2: 2,
-    a3: 2670.63543545,
-    a4: 'a4',
-    a5: 'a5',
-    facilities: ['aa1', 'aa2', 'aa3']
-  },{
-    _id: '638829265ee405f5ce4d01c1',
-    a1: 'b1',
-    a2: 4,
-    a3: 123.7457345344,
-    a4: 'b4',
-    a5: 'b5',
-    facilities: ['bb1', 'bb2', 'bb3']
-  }];
-
-
-  ngOnInit() {
+  private getMs(): void {
+    this.mDataService.getMs()
+      .then(response => this.ms = response);
   }
 
-
+  ngOnInit() {
+    this.getMs();
+  }
 
 }
