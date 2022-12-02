@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 
 import { MListComponent } from './m-list/m-list.component';
+import { AppendSPipe } from './append-s.pipe';
 
 @NgModule({
   declarations: [
-    MListComponent
+    MListComponent,
+    AppendSPipe
   ],
   imports: [
     BrowserModule

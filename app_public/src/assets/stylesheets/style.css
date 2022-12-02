@@ -26,9 +26,10 @@ background-image: url("data:image/svgxml;charset=utf8,%3CsvgviewBox='0 0 30 30'x
 color: white;
 }
 .card {
-background-color:  darkslategray;
+background-color:  rgb(49, 71, 71);
 padding: 1rem;
-border: 3px solid green
+border: 3px solid green;
+margin-top: 2px;
 }
 
 
@@ -54,7 +55,7 @@ margin-left: -16px;
 margin-bottom: 0.5em;
 }
 .badge-default, .badge-pill, .badge, .btn-primary {
-background-color: green;
+background-color: rgb(128, 62, 0);
 border-color: greenyellow;
 }
 h4 a, h4 a:hover {

@@ -14,7 +14,7 @@ const mCreateOne = (req, res) => {
     const formM = {
         a1: req.body.a1,
         a2: parseInt(req.body.a2),
-        a3: req.body.a3,
+        a3: parseFloat(req.body.a3),
         a4: req.body.a4,
         a5: req.body.a5,
         facilities: req.body.facilities.split(',')
@@ -53,7 +53,7 @@ const mReadOne = (req, res) => {
 const doUpdateM = (req, res, m) => {
     m.a1 = req.body.a1;
     m.a2 = parseInt(req.body.a2);
-    m.a3 = req.body.a3;
+    m.a3 = parseFloat(req.body.a3);
     m.a4 = req.body.a4;
     m.a5 = req.body.a5;
     m.facilities = req.body.a1.split(',');

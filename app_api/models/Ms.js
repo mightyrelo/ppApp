@@ -30,7 +30,7 @@ const MSchema = mongoose.Schema({
         min: 0,
         max: 5
     },
-    a3: String,
+    a3: Number,
     a4: String,
     a5: String,
     facilities: [String],
