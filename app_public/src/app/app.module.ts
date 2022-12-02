@@ -13,6 +13,8 @@ import { MPageComponent } from './m-page/m-page.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { HomeContentComponent } from './home-content/home-content.component';
+import { MDetailsPageComponent } from './m-details-page/m-details-page.component';
+import { MDetailsContentComponent } from './m-details-content/m-details-content.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { HomeContentComponent } from './home-content/home-content.component';
     MPageComponent,
     PageHeaderComponent,
     SideBarComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    MDetailsPageComponent,
+    MDetailsContentComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,9 @@ import { HomeContentComponent } from './home-content/home-content.component';
     }, {
       path: 'ms',
       component: MPageComponent
+    }, {
+      path: 'ms/:msId',
+      component: MDetailsPageComponent
     }])
   ],
   providers: [],
