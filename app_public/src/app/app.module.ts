@@ -1,16 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+
+import { MListComponent } from './m-list/m-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    MListComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MListComponent]
 })
 export class AppModule { }
