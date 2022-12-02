@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MPageComponent implements OnInit {
 
+  public pageContent = {
+    header: {
+      title: 'titl',
+      strapline: 'strap'
+    },
+    sideBar: {
+      main: 'main',
+      sub: 'support'
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {
