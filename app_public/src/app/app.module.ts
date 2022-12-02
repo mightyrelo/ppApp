@@ -9,6 +9,9 @@ import { FrameworkComponent } from './framework/framework.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MPageComponent } from './m-page/m-page.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 
 @NgModule({
@@ -18,14 +21,20 @@ import { HomePageComponent } from './home-page/home-page.component';
     FrameworkComponent,
     NavBarComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    MPageComponent,
+    PageHeaderComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([{
+      path: '',
+      component: HomePageComponent
+    }, {
       path: 'ms',
-      component: MListComponent
+      component: MPageComponent
     }])
   ],
   providers: [],

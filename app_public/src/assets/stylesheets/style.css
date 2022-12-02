@@ -32,6 +32,13 @@ border: 3px solid green;
 margin-top: 2px;
 }
 
+.active {
+  color: rgb(174, 0, 255);
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-thickness: 0.25em;
+}
+
 
 .card-primary {
 border-color:  darkslategray;

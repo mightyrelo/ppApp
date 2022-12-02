@@ -32,6 +32,10 @@ border: 3px solid green;
 margin-top: 2px;
 }
 
+.active {
+  color: purple
+}
+
 
 .card-primary {
 border-color:  darkslategray;
