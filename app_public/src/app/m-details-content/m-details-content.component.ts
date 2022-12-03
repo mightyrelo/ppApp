@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { M } from '../m-list/m-list.component';
 
 @Component({
   selector: 'app-m-details-content',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./m-details-content.component.css']
 })
 export class MDetailsContentComponent implements OnInit {
+
+  @Input() content: M;
 
   constructor() { }
 

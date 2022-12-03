@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,  ParamMap } from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+
+import { MDataService } from '../m-data.service';
+import { M } from '../m-list/m-list.component';
 
 @Component({
   selector: 'app-m-details-page',
@@ -7,21 +12,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MDetailsPageComponent implements OnInit {
 
+  public dbM: M;
+
   public pageContent = {
     header: {
-      title: 'M Details',
-      strapline: 'Details of M'
+      title: '',
+      strapline: ''
 
     },
     sideBar: {
-      main: 'M\'s specific details M\'s specific details M\'s specific details M\'s specific details M\'s specific details M\'s specific details M\'s specific details M\'s specific details M\'s specific details M\'s specific details ',
-      sub: 'details specific to M details specific to M details specific to M details specific to M details specific to M details specific to M details specific to M details specific to M details specific to M '
+      main: '',
+      sub: ''
     }
   };
 
-  constructor() { }
+  constructor(
+    private mDataService: MDataService,
+    private route: ActivatedRoute
+  ) { }
 
-  ngOnInit() {
+  public getM() : void {
+    console.log('hello');
+
   }
 
+  ngOnInit() : void {
+   console.log('am on it');
+   this.route.paramMap
+     .pipe(
+       switchMap((params: ParamMap) => {
+        let id = params.get('mId');
+        return this.mDataService.getMById(id);
+       })
+     )
+     .subscribe((newM: M) => {
+      this.dbM = newM;
+      this.pageContent.header.title = newM.a1.toString();
+      this.pageContent.sideBar.main = `${newM.a1} is on ppApp because they are serious about putting pap on the table.`
+      this.pageContent.sideBar.sub = `This app was made for people like ${newM.a1}`
+     });
+  }
 }

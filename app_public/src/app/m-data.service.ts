@@ -24,6 +24,15 @@ export class MDataService {
       .catch(this.handleError);
   }
 
+  public getMById(mId: string) : Promise<M> {
+    const url : string = `${this.apiBaseUrl}/ms/${mId}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as M)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any) : Promise<any> {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);
