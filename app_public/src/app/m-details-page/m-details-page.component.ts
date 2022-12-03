@@ -31,13 +31,8 @@ export class MDetailsPageComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  public getM() : void {
-    console.log('hello');
-
-  }
-
   ngOnInit() : void {
-   console.log('am on it');
+   
    this.route.paramMap
      .pipe(
        switchMap((params: ParamMap) => {
@@ -46,7 +41,6 @@ export class MDetailsPageComponent implements OnInit {
        })
      )
      .subscribe((newM: M) => {
-      this.dbM = newM;
       this.pageContent.header.title = newM.a1.toString();
       this.pageContent.sideBar.main = `${newM.a1} is on ppApp because they are serious about putting pap on the table.`
       this.pageContent.sideBar.sub = `This app was made for people like ${newM.a1}`

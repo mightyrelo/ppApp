@@ -42,7 +42,7 @@ import { MDetailsContentComponent } from './m-details-content/m-details-content.
       path: 'ms',
       component: MPageComponent
     }, {
-      path: 'ms/:msId',
+      path: 'ms/:mId',
       component: MDetailsPageComponent
     }])
   ],
