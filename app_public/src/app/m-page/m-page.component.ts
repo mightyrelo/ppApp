@@ -9,8 +9,8 @@ export class MPageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'titl',
-      strapline: 'strap'
+      title: 'List of Ms',
+      strapline: ''
     },
     sideBar: {
       main: 'main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main ',
