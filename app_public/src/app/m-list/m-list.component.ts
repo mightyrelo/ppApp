@@ -26,7 +26,7 @@ export class MListComponent implements OnInit {
 
   private getMs(): void {
     this.mDataService.getMs()
-      .then(response => this.ms = response);
+      .then(response => this.ms = response.reverse());
   }
 
   ngOnInit() {
