@@ -39,7 +39,7 @@
                 <h2 class="card-title">SMs </h2>
                 <div *ngFor="let sm of dbM.sms | mostRecentFirst" class="row review">
                   <div class="col-12 no-gutters review-header">
-                    <small class="reviewTimestamp"> {{sm.b3}} ----&gt;   </small>
+                    <small class="reviewTimestamp"> {{sm.b3 | date : 'd MMMM yyyy HH:MM:SS'}} ----&gt;   </small>
                     <small class="reviewTimestamp">{{sm.b2}}</small>
                     <small> <a class="float-right" href="/ms/{{dbM._id}}/sms/{{sm._id}}/del">delete</a></small>
                    </div>

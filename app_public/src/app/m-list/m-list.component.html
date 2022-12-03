@@ -1,6 +1,6 @@
 <div>
   <div class="error"></div>
-  <div *ngFor="let m of ms" class="card">
+  <div *ngFor="let m of ms | mostRecentFirst" class="card">
     <div class="card-block">
       <h4>
         <a routerLink="/ms/{{m._id}}">{{m.a1}}</a>
