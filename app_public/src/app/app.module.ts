@@ -15,6 +15,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { MDetailsPageComponent } from './m-details-page/m-details-page.component';
 import { MDetailsContentComponent } from './m-details-content/m-details-content.component';
+import { MostRecentFirstPipe } from './most-recent-first.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MDetailsContentComponent } from './m-details-content/m-details-content.
     SideBarComponent,
     HomeContentComponent,
     MDetailsPageComponent,
-    MDetailsContentComponent
+    MDetailsContentComponent,
+    MostRecentFirstPipe
   ],
   imports: [
     BrowserModule,

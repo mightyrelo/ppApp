@@ -35,7 +35,11 @@ const MSchema = mongoose.Schema({
     a5: String,
     facilities: [String],
     duration: DurationSchema,
-    sms: [SMSchema]
+    sms: [SMSchema],
+    createdOn: {
+        type: Date,
+        'default': Date.now()
+    }
 });
 
 //create model by compiing schema
