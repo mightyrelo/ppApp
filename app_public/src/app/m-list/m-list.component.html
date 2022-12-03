@@ -3,7 +3,7 @@
   <div *ngFor="let m of ms" class="card">
     <div class="card-block">
       <h4>
-        <a href="/ms/{{m._id}}">{{m.a1}}</a>
+        <a routerLink="/ms/{{m._id}}">{{m.a1}}</a>
         <small>&nbsp;
            <i class="fa{{m.a2 < 1 ? 'r' : 's'}} fa-star"></i>
            <i class="fa{{m.a2 < 2 ? 'r' : 's'}} fa-star"></i>

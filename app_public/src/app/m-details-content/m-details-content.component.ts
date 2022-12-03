@@ -9,11 +9,12 @@ import { M } from '../m-list/m-list.component';
 })
 export class MDetailsContentComponent implements OnInit {
 
-  @Input() content: M;
+  @Input() dbM: M;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() : void {
+    console.log('child m', this.dbM);
   }
 
 }
