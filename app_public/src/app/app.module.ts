@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MListComponent } from './m-list/m-list.component';
 import { AppendSPipe } from './append-s.pipe';
@@ -37,6 +38,8 @@ import { MostRecentFirstPipe } from './most-recent-first.pipe';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([{
       path: '',
       component: HomePageComponent
@@ -45,6 +48,9 @@ import { MostRecentFirstPipe } from './most-recent-first.pipe';
       component: MPageComponent
     }, {
       path: 'ms/:mId',
+      component: MDetailsPageComponent
+    }, {
+      path: 'ms/:mId/sms/new',
       component: MDetailsPageComponent
     }])
   ],

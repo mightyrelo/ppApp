@@ -35,7 +35,30 @@
           <div class="col-12">
             <div class="card-primary review-card">
               <div class="card-block">
-                <a class="btn btn-primary float-right" href="/ms/{{dbM._id}}/sms/new">Add SM </a>
+                <a class="btn btn-primary float-right" (click)="formVisible = true">Add SM </a>
+                <div *ngIf="formVisible">
+                  <form (ngSubmit)="onSMSubmit()" method="post" role="form">
+                    <div *ngIf="formError" class="alert alert-danger" role="alert">
+                      {{formError}}
+                    </div>
+                    <div class="form-group row">
+                       <label class="col-10 col-sm-2 col-form-label" for="b1">b1</label>
+                       <div class="col-12 col-sm-5">
+                         <input [(ngModel)]="formM.b1" class="form-control" id="name" name="b1">
+                       </div>
+                    </div>
+                    <div class="form-group row">
+                       <label class="col-10 col-sm-2 col-form-label" for="b2">b2</label>
+                       <div class="col-12 col-sm-5">
+                         <input [(ngModel)]="formM.b2" class="form-control" id="name" name="b2">
+                       </div>
+                       <div class="col-sm-10">
+                         <button type="submit" class="btn btn-primary float-left">Create SM</button>
+                         <button type="button" (click)="formVisible = false" class="btn btn-primary float-left">Cancel</button>
+                       </div>
+                      </div>
+                    </form>
+                </div>
                 <h2 class="card-title">SMs </h2>
                 <div *ngFor="let sm of dbM.sms | mostRecentFirst" class="row review">
                   <div class="col-12 no-gutters review-header">

@@ -11,6 +11,11 @@ export class M {
   facilities: String[];
 }
 
+export class SM {
+  b1: String;
+  b2: number;
+}
+
 @Component({
   selector: 'app-m-list',
   templateUrl: './m-list.component.html',

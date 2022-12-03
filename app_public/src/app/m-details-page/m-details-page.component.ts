@@ -41,9 +41,7 @@ export class MDetailsPageComponent implements OnInit {
        })
      )
      .subscribe((newM: M) => {
-      console.log(newM);
       this.newM = newM;
-      console.log(this.newM);
       this.pageContent.header.title = newM.a1.toString();
       this.pageContent.sideBar.main = `${newM.a1} is on ppApp because they are serious about putting pap on the table.`
       this.pageContent.sideBar.sub = `This app was made for people like ${newM.a1}`
