@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+import { environment } from 'src/environments/environment';
 import { M } from './m';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { M } from './m';
 })
 export class MDataService {
 
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiBaseUrl;
 
   constructor(
     private http: HttpClient
