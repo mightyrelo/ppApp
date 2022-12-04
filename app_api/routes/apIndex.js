@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
+const authCtrl = require('../controllers/authentication');
 
 //model/collection routes
 //list
@@ -33,5 +34,8 @@ router
   .get(smCtrl.smReadOne)
   .put(smCtrl.smUpdateOne)
   .delete(smCtrl.smDeleteOne);
+
+router.post('/register', authCtrl.register);
+router.post('/login', authCtrl.login);
 
 module.exports = router;

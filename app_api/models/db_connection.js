@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('./Ms');
+require('./Users');
 
 //connection string
 let dbURI = 'mongodb://localhost/ppApp';

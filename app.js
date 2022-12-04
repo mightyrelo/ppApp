@@ -1,10 +1,13 @@
+//require('dot-env');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //connect instance of mongoose to db
+const passport = require('passport');
 require('./app_api/models/db_connection');
+require('./app_api/config/passport');
 
 //var indexRouter = require('./app_server/routes/index');
 const apiRouter = require('./app_api/routes/apIndex');
@@ -22,10 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_public', 'build')));
+app.use(passport.initialize());
 
 app.use('/api', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.header('Access-Control-Allow-Headers', 'Origin, x-Requested-With,Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, x-Requested-With,Content-Type, Accept, Authorization');
   next();
 });
 
