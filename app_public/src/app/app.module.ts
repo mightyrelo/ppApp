@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MListComponent } from './m-list/m-list.component';
@@ -17,6 +16,7 @@ import { HomeContentComponent } from './home-content/home-content.component';
 import { MDetailsPageComponent } from './m-details-page/m-details-page.component';
 import { MDetailsContentComponent } from './m-details-content/m-details-content.component';
 import { MostRecentFirstPipe } from './most-recent-first.pipe';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({
@@ -40,19 +40,7 @@ import { MostRecentFirstPipe } from './most-recent-first.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([{
-      path: '',
-      component: HomePageComponent
-    }, {
-      path: 'ms',
-      component: MPageComponent
-    }, {
-      path: 'ms/:mId',
-      component: MDetailsPageComponent
-    }, {
-      path: 'ms/:mId/sms/new',
-      component: MDetailsPageComponent
-    }])
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [FrameworkComponent]
