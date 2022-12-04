@@ -32,6 +32,15 @@ export class MDataService {
       .then(response => response as M)
       .catch(this.handleError);
   }
+
+  public postM(m: M) : Promise<M> {
+    const url : string = `${this.apiBaseUrl}/ms`;
+    return this.http
+      .post(url, m)
+      .toPromise()
+      .then(response => response as M)
+      .catch(this.handleError);
+  }
   
 
   private handleError(error: any) : Promise<any> {

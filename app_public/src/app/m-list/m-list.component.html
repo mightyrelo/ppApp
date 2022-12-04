@@ -1,27 +1,55 @@
-<div>
-  <div class="error"></div>
-  <div *ngFor="let m of ms | mostRecentFirst" class="card">
-    <div class="card-block">
-      <h4>
-        <a routerLink="/ms/{{m._id}}">{{m.a1}}</a>
-        <small>&nbsp;
-           <i class="fa{{m.a2 < 1 ? 'r' : 's'}} fa-star"></i>
-           <i class="fa{{m.a2 < 2 ? 'r' : 's'}} fa-star"></i>
-           <i class="fa{{m.a2 < 3 ? 'r' : 's'}} fa-star"></i>
-           <i class="fa{{m.a2 < 4 ? 'r' : 's'}} fa-star"></i>
-           <i class="fa{{m.a2 < 5 ? 'r' : 's'}} fa-star"></i>
-       </small>
-       <span class="badge badge-pill badge-default float-right">{{m.a3 | appendS}}</span>
-     </h4>
-     <p class="address">{{m.a4}}</p>
-     <div class="facilities">
-        <span *ngFor="let facility of m.facilities" class="badge badge-pill">{{facility}}</span>
+<div class="row">
+  <div class="col-12">
+    <small>
+      <button (click)="formVisible=true" class="btn-primary float-right" >Add M </button>
+    </small>
+  </div>
+  <div *ngIf="formVisible" class="col-12 col-md-8">
+    <form (ngSubmit)="onMSubmit()" >
+      <div role="alert" *ngIf="formError" class="alert alert-danger">
+        {{formError}}
+      </div>
+      <div class="form-group">
+         <label for="a1">a1</label>
+         <input class="form-control" id="a1" name="a1" type="text" placeholder="">
+      </div> 
+      <div class="form-group">
+         <label for="a2">a2</label>
+         <textarea class="form-control" id="a2" name="a2" placeholder=""></textarea>
+      </div>
+      <div class="form-group">
+        <label for="a3">a3</label>
+        <input class="form-control" id="a3" name="a3" type="text" placeholder="">
+     </div> 
+     <div class="form-group row">
+      <label for="a4">a4</label>
+      <input class="form-control" type="text" id="a4" name="a4">
      </div>
-     <h4>
-       <small>
-         <a class="float-right" href="/ms/{{m._id}}/del">delete </a>
-      </small>
-     </h4>
+      <div class="form-group">
+        <label for="facilities">Facilities</label>
+        <input class="form-control" id="facilities" name="facilities" type="text" placeholder="">
+     </div> 
+      <button type="submit" role="button" class="btn-primary">Add</button> 
+      <button (click)="formVisible=false" type="button" role="button" class="btn-primary">Cancel</button> 
+    </form>     
+  </div>
+</div> 
+<div *ngFor="let m of ms" class="card">
+   <div class="card-block"> 
    </div>
- </div> 
+   <h4> <a routerLink="/ms/{{m._id}}">{{m.a1}}</a>
+    <small>&nbsp;
+      <i class="fa{{m.a2 < 1 ? 'r':'s' }} fa-star"></i>
+      <i class="fa{{m.a2 < 2 ? 'r':'s' }} fa-star"></i>
+      <i class="fa{{m.a2 < 3 ? 'r':'s' }} fa-star"></i>
+      <i class="fa{{m.a2 < 4 ? 'r':'s' }} fa-star"></i>
+      <i class="fa{{m.a2 < 5 ? 'r':'s' }} fa-star"></i>
+      <a class="float-right" routerLink="/ms/{{m._id}}/del">Delete</a>
+    </small>
+  </h4>
+  <small><span class="badge badge-pill badge-default float-left">{{m.a3 | appendS}}</span></small>
+  <p class="address">{{m.a5}}</p>
+  <div class="facilities">
+    <span *ngFor="let facility of m.facilities" class="badge badge-warning">{{facility}}</span>
+  </div>
 </div>

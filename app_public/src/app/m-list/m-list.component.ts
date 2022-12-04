@@ -23,6 +23,16 @@ export class SM {
 })
 export class MListComponent implements OnInit {
 
+  public formM : M = {
+    _id: '',
+    a1: '',
+    a2: 0,
+    a3: 0,
+    a4: '',
+    a5: '',
+    facilities: [],
+  }
+
   public ms: M[];
   
   constructor(
@@ -32,6 +42,12 @@ export class MListComponent implements OnInit {
   private getMs(): void {
     this.mDataService.getMs()
       .then(response => this.ms = response.reverse());
+  }
+
+  public onMSubmit() : void {
+    this.mDataService.postM(this.formM)
+      .then(response => {console.log('m saved', response)});
+
   }
 
   ngOnInit() {
