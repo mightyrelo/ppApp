@@ -15,7 +15,7 @@ export class MDetailsContentComponent implements OnInit {
 
   public formSM = {
     b1: '',
-    b2: 0
+    b2: null
   };
 
   public formError = '';
@@ -30,9 +30,36 @@ export class MDetailsContentComponent implements OnInit {
     private smDataService : SmDataService
   ) { }
 
-  private smFormIsValid() {}
+  private smFormIsValid() : boolean {
+    if(!this.formSM.b1 || !this.formSM.b2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  public resetAndHideSMForm() : void {
+    this.displayForm = false;
+    this.formSM.b1 = '';
+    this.formSM.b2 = null;
+    this.formError = '';
+  }
 
   public onSMSubmit() : void {
+    if(this.smFormIsValid()) {
+      console.log('form valid');
+      /*this.smDataService.postSM(this.dbM._id.toString(), this.formSM)
+        .then(sm => {
+          console.log('sm saved', sm);
+          //save sm on m
+          let sms = this.dbM.sms.slice(0);
+          sms.unshift(sm);
+          this.dbM.sms = sms;
+        });*/
+
+    } else {
+      this.formError = 'all fields required, leka gape';
+    }
 
 
   }

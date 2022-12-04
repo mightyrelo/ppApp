@@ -38,23 +38,25 @@
                 <h2 class="card-title">SMs </h2>
                 <div class="col-12">
                   <small>
-                    <button (click)="displayForm=true" class="btn-primary float-right" >Add SM</button>
+                    <button (click)="displayForm=true" class="btn-primary float-right">Add SM</button>
                   </small>
                 </div>
                 <div *ngIf="displayForm" class="col-12 col-md-8">
-                  <form >
+                  <form (ngSubmit)="onSMSubmit()" method="post" role="form">
+                    <div *ngIf="formError" class="alert alert-danger">
+                      {{formError}}</div>
                     <div class="form-group">
                        <label for="b1">b1</label>
-                       <input class="form-control" id="b1" name="b1" type="text" placeholder="">
+                       <input class="form-control" id="b1" name="b1" type="text" placeholder="" [(ngModel)]="formSM.b1">
                     </div> 
                     <div class="form-group">
                        <label for="b2">b2</label>
-                       <input class="form-control" id="b2" name="b2" type="text" placeholder="">
+                       <input class="form-control" id="b2" name="b2" type="text" placeholder="" [(ngModel)]="formSM.b2">
                     </div> 
                     <div class="form-group">
                     </div>
                     <button  type="submit" role="button" class="btn-primary">Add</button> 
-                    <button (click)="displayForm=false"  type="button" role="button" class="btn-primary">Cancel</button> 
+                    <button (click)="resetAndHideSMForm()" type="button" role="button" class="btn-primary">Cancel</button> 
                   </form>     
                 </div>
                 <div *ngFor="let sm of dbM.sms | mostRecentFirst" class="row review">

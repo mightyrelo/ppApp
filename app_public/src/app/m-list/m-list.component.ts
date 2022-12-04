@@ -9,6 +9,7 @@ export class M {
   a4: String;
   a5: String;
   facilities: String[];
+  sms: any[];
 }
 
 export class SM {
@@ -33,6 +34,7 @@ export class MListComponent implements OnInit {
     a4: '',
     a5: '',
     facilities: [],
+    sms: []
   };
 
   public errorInForm = '';
