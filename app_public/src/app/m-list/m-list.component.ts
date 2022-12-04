@@ -29,8 +29,8 @@ export class MListComponent implements OnInit {
   public formM : M = {
     _id: '',
     a1: '',
-    a2: 0,
-    a3: 0,
+    a2: null,
+    a3: null,
     a4: '',
     a5: '',
     facilities: [],
@@ -61,8 +61,8 @@ export class MListComponent implements OnInit {
   public resetAndHideMForm() : void {
     this.errorInForm = '';
     this.formM.a1 = '';
-    this.formM.a2 = 0;
-    this.formM.a3 = 0 ;
+    this.formM.a2 = null;
+    this.formM.a3 = null;
     this.formM.a4 = '';
     this.formM.a5 = '';
     this.formM.facilities = [];

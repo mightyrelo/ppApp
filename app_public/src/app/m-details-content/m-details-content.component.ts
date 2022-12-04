@@ -47,16 +47,15 @@ export class MDetailsContentComponent implements OnInit {
 
   public onSMSubmit() : void {
     if(this.smFormIsValid()) {
-      console.log('form valid');
-      /*this.smDataService.postSM(this.dbM._id.toString(), this.formSM)
+      this.smDataService.postSM(this.dbM._id.toString(), this.formSM)
         .then(sm => {
           console.log('sm saved', sm);
           //save sm on m
           let sms = this.dbM.sms.slice(0);
           sms.unshift(sm);
-          this.dbM.sms = sms;
-        });*/
-
+          this.dbM.sms = sms; 
+          this.resetAndHideSMForm();
+        });
     } else {
       this.formError = 'all fields required, leka gape';
     }

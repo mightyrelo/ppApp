@@ -36,7 +36,7 @@
             <div class="card-primary review-card">
               <div class="card-block">
                 <h2 class="card-title">SMs </h2>
-                <div class="col-12">
+                <div class="row sm-button">
                   <small>
                     <button (click)="displayForm=true" class="btn-primary float-right">Add SM</button>
                   </small>
@@ -55,8 +55,8 @@
                     </div> 
                     <div class="form-group">
                     </div>
-                    <button  type="submit" role="button" class="btn-primary">Add</button> 
-                    <button (click)="resetAndHideSMForm()" type="button" role="button" class="btn-primary">Cancel</button> 
+                    <button  type="submit" role="button" class="btn-primary sm-button">Add</button> 
+                    <button (click)="resetAndHideSMForm()" type="button" role="button" class="btn-primary sm-button">Cancel</button> 
                   </form>     
                 </div>
                 <div *ngFor="let sm of dbM.sms | mostRecentFirst" class="row review">

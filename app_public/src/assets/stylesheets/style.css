@@ -97,3 +97,7 @@ h4 small {
   color: #fff;
   background-color: darkslategray;
   }
+
+  .sm-button {
+    margin-bottom: 2px;
+  }
