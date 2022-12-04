@@ -33,10 +33,10 @@ export class MDataService {
       .catch(this.handleError);
   }
 
-  public postM(m: M) : Promise<M> {
+  public postM(formM: M) : Promise<M> {
     const url : string = `${this.apiBaseUrl}/ms`;
     return this.http
-      .post(url, m)
+      .post(url, formM)
       .toPromise()
       .then(response => response as M)
       .catch(this.handleError);

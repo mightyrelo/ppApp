@@ -1,36 +1,40 @@
 <div class="row">
   <div class="col-12">
     <small>
-      <button (click)="formVisible=true" class="btn-primary float-right" >Add M </button>
+      <button (click)="openForm=true" class="btn-primary float-right" >Add M </button>
     </small>
   </div>
-  <div *ngIf="formVisible" class="col-12 col-md-8">
+  <div *ngIf="openForm" class="col-12 col-md-8">
     <form (ngSubmit)="onMSubmit()" >
-      <div role="alert" *ngIf="formError" class="alert alert-danger">
-        {{formError}}
+      <div role="alert" *ngIf="errorInForm" class="alert alert-danger">
+        {{errorInForm}}
       </div>
       <div class="form-group">
          <label for="a1">a1</label>
-         <input class="form-control" id="a1" name="a1" type="text" placeholder="">
+         <input class="form-control" id="a1" name="a1" type="text" placeholder="" [(ngModel)]="formM.a1">
       </div> 
       <div class="form-group">
          <label for="a2">a2</label>
-         <textarea class="form-control" id="a2" name="a2" placeholder=""></textarea>
+         <input class="form-control" id="a2" name="a2" placeholder="" [(ngModel)]="formM.a2">
       </div>
       <div class="form-group">
         <label for="a3">a3</label>
-        <input class="form-control" id="a3" name="a3" type="text" placeholder="">
+        <input class="form-control" id="a3" name="a3" type="text" placeholder="" [(ngModel)]="formM.a3">
      </div> 
-     <div class="form-group row">
+     <div class="form-group">
       <label for="a4">a4</label>
-      <input class="form-control" type="text" id="a4" name="a4">
+      <input class="form-control" type="text" id="a4" name="a4" [(ngModel)]="formM.a4">
+     </div>
+     <div class="form-group">
+      <label for="a5">a5</label>
+      <input class="form-control" type="text" id="a5" name="a5" [(ngModel)]="formM.a5">
      </div>
       <div class="form-group">
         <label for="facilities">Facilities</label>
-        <input class="form-control" id="facilities" name="facilities" type="text" placeholder="">
+        <input class="form-control" id="facilities" name="facilities" type="text" placeholder="" [(ngModel)]="formM.facilities">
      </div> 
       <button type="submit" role="button" class="btn-primary">Add</button> 
-      <button (click)="formVisible=false" type="button" role="button" class="btn-primary">Cancel</button> 
+      <button (click)="resetAndHideMForm()" type="button" role="button" class="btn-primary">Cancel</button> 
     </form>     
   </div>
 </div> 
@@ -47,7 +51,7 @@
       <a class="float-right" routerLink="/ms/{{m._id}}/del">Delete</a>
     </small>
   </h4>
-  <small><span class="badge badge-pill badge-default float-left">{{m.a3 | appendS}}</span></small>
+  <small><span class="badge badge-pill badge-default float-right">{{m.a3 | appendS}}</span></small>
   <p class="address">{{m.a5}}</p>
   <div class="facilities">
     <span *ngFor="let facility of m.facilities" class="badge badge-warning">{{facility}}</span>
