@@ -23,6 +23,15 @@ export class SmDataService {
 
   }
 
+  public deleteSMByIds(mId: string, smId: string) : Promise<any> {
+    const url: string = `${this.apiBaseUrl}/ms/${mId}/sms/${smId}`;
+    return this.http
+      .delete(url)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  } 
+
   private handleError(error: any) : Promise<any> {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 import { M } from '../m';
 import {SM} from '../sm';
-import { MDataService } from '../m-data.service';
 import { SmDataService } from '../sm-data.service';
 
 @Component({
@@ -24,8 +24,9 @@ export class MDetailsContentComponent implements OnInit {
   public displayForm : boolean = false;
 
   constructor(
-    private mDataService : MDataService,
-    private smDataService : SmDataService
+
+    private smDataService : SmDataService,
+    private route : ActivatedRoute
   ) { }
 
   private smFormIsValid() : boolean {
@@ -57,11 +58,24 @@ export class MDetailsContentComponent implements OnInit {
     } else {
       this.formError = 'all fields required, leka gape';
     }
-
-
   }
 
   ngOnInit() : void {
+    this.route.paramMap
+    .pipe(
+      switchMap((params: ParamMap) => {
+       let mId = params.get('mId');
+       let smId = params.get('smId');
+       let del = false;
+       if(mId && smId) {
+        del = true;
+        return this.smDataService.deleteSMByIds(mId, smId);
+       }
+      })
+    )
+    .subscribe((none: any) => {
+        console.log('deleted');
+    });
    
   }
 

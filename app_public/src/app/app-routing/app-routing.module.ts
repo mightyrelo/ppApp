@@ -6,6 +6,7 @@ import { HomePageComponent } from '../home-page/home-page.component';
 import { MDetailsPageComponent } from '../m-details-page/m-details-page.component';
 import { MPageComponent } from '../m-page/m-page.component';
 import { MListComponent } from '../m-list/m-list.component';
+import { MDetailsContentComponent } from '../m-details-content/m-details-content.component';
 
 const routes : Routes = 
   [{
@@ -23,6 +24,9 @@ const routes : Routes =
 }, {
   path: 'ms/:mId/del',
   component: MListComponent, 
+}, {
+  path: 'ms/:mId/sms/:smId/del',
+  component: MDetailsContentComponent, 
 }];
 
 @NgModule({
