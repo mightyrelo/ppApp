@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 
 import { M } from '../m';
+import {SM} from '../sm';
 import { MDataService } from '../m-data.service';
 import { SmDataService } from '../sm-data.service';
 
@@ -14,7 +15,7 @@ export class MDetailsContentComponent implements OnInit {
 
   @Input() dbM: M;
 
-  public formSM = {
+  public formSM : SM = {
     b1: '',
     b2: null,
   };
@@ -45,7 +46,7 @@ export class MDetailsContentComponent implements OnInit {
   public onSMSubmit() : void {
     if(this.smFormIsValid()) {
       this.smDataService.postSM(this.dbM._id.toString(), this.formSM)
-        .then(sm => {
+        .then((sm: SM) => {
           console.log('sm saved', sm);
           //save sm on m
           let sms = this.dbM.sms.slice(0);
