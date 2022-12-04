@@ -41,6 +41,15 @@ export class MDataService {
       .then(response => response as M)
       .catch(this.handleError);
   }
+
+  public deleteMById(mId: string) : Promise<null> {
+    const url : string = `${this.apiBaseUrl}/ms/${mId}`;
+    return this.http
+      .delete(url)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
   
 
   private handleError(error: any) : Promise<any> {

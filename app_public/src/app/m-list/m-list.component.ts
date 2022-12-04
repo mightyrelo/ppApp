@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MDataService } from '../m-data.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
+import { MDataService } from '../m-data.service';
 import { M } from '../m';
 
 @Component({
@@ -29,7 +31,8 @@ export class MListComponent implements OnInit {
   public ms: M[];
   
   constructor(
-    private mDataService: MDataService
+    private mDataService: MDataService,
+    private route: ActivatedRoute
   ) { }
 
   private getMs(): void {
@@ -74,6 +77,18 @@ export class MListComponent implements OnInit {
 
   ngOnInit() {
     this.getMs();
-  }
-
+    //
+    this.route.paramMap
+    .pipe(
+      switchMap((params: ParamMap) => {
+       let id = params.get('mId');
+       return this.mDataService.deleteMById(id);
+      })
+    )
+    .subscribe((none: any) => {
+      console.log('deleted');
+    });
+ }
 }
+
+

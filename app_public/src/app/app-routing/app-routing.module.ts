@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { MDetailsPageComponent } from '../m-details-page/m-details-page.component';
 import { MPageComponent } from '../m-page/m-page.component';
+import { MListComponent } from '../m-list/m-list.component';
 
 const routes : Routes = 
   [{
@@ -18,7 +19,10 @@ const routes : Routes =
     component: MDetailsPageComponent
   }, {
     path: 'ms/:mId/sms/new',
-    component: MDetailsPageComponent
+    component: MDetailsPageComponent, 
+}, {
+  path: 'ms/:mId/del',
+  component: MListComponent, 
 }];
 
 @NgModule({
