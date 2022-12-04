@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { M } from './m-list/m-list.component';
+import { M } from './m';
 
 @Injectable({
   providedIn: 'root'

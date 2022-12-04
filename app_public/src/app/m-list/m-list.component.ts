@@ -1,21 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MDataService } from '../m-data.service';
 
-export class M {
-  _id: String;
-  a1: String;
-  a2: number;
-  a3: number;
-  a4: String;
-  a5: String;
-  facilities: String[];
-  sms: any[];
-}
-
-export class SM {
-  b1: String;
-  b2: number;
-}
+import { M } from '../m';
 
 @Component({
   selector: 'app-m-list',
@@ -34,7 +20,8 @@ export class MListComponent implements OnInit {
     a4: '',
     a5: '',
     facilities: [],
-    sms: []
+    sms: [],
+    duration: []
   };
 
   public errorInForm = '';
@@ -80,7 +67,6 @@ export class MListComponent implements OnInit {
         this.resetAndHideMForm();
       });
     } else {
-      console.log('hello');
       this.errorInForm = 'all fields are required, leka gape';
     }
 

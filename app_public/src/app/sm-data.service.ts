@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { M, SM } from './m-list/m-list.component';
+import { SM } from './sm';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,12 @@ export class SmDataService {
     private http: HttpClient
   ) { }
 
-  public postSM(mId: string, formSm: SM) : Promise<any> {
+  public postSM(mId: string, formSm: SM) : Promise<SM> {
     const url: string = `${this.apiBaseUrl}/ms/${mId}/sms`;
     return this.http
       .post(url, formSm)
       .toPromise()
-      .then(response => response as any)
+      .then(response => response as SM)
       .catch(this.handleError);
 
   }

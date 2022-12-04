@@ -3,7 +3,7 @@ import { ActivatedRoute,  ParamMap } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 
 import { MDataService } from '../m-data.service';
-import { M } from '../m-list/m-list.component';
+import { M } from '../m';
 
 @Component({
   selector: 'app-m-details-page',

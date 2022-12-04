@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { M } from '../m-list/m-list.component';
+
+import { M } from '../m';
 import { MDataService } from '../m-data.service';
 import { SmDataService } from '../sm-data.service';
 
@@ -15,15 +16,11 @@ export class MDetailsContentComponent implements OnInit {
 
   public formSM = {
     b1: '',
-    b2: null
+    b2: null,
   };
 
   public formError = '';
   public displayForm : boolean = false;
-
-
-
-  
 
   constructor(
     private mDataService : MDataService,
