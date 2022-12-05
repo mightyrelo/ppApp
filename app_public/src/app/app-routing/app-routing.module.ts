@@ -7,6 +7,8 @@ import { MDetailsPageComponent } from '../m-details-page/m-details-page.componen
 import { MPageComponent } from '../m-page/m-page.component';
 import { MListComponent } from '../m-list/m-list.component';
 import { MDetailsContentComponent } from '../m-details-content/m-details-content.component';
+import { RegisterPageComponent } from '../register-page/register-page.component';
+import { LoginPageComponent } from '../login-page/login-page.component';
 
 const routes : Routes = 
   [{
@@ -27,6 +29,12 @@ const routes : Routes =
 }, {
   path: 'ms/:mId/sms/:smId/del',
   component: MDetailsContentComponent, 
+}, {
+  path: 'register',
+  component: RegisterPageComponent, 
+}, {
+  path: 'login',
+  component: RegisterPageComponent, 
 }];
 
 @NgModule({

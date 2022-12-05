@@ -17,6 +17,10 @@ import { MDetailsPageComponent } from './m-details-page/m-details-page.component
 import { MDetailsContentComponent } from './m-details-content/m-details-content.component';
 import { MostRecentFirstPipe } from './most-recent-first.pipe';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     HomeContentComponent,
     MDetailsPageComponent,
     MDetailsContentComponent,
-    MostRecentFirstPipe
+    MostRecentFirstPipe,
+    RegisterPageComponent,
+    LoginPageComponent,
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
