@@ -34,7 +34,7 @@ const routes : Routes =
   component: RegisterPageComponent, 
 }, {
   path: 'login',
-  component: RegisterPageComponent, 
+  component: LoginPageComponent, 
 }];
 
 @NgModule({

@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
+  public pageContent = {
+    header: {
+      title: 'Log into ppApp',
+      strapline: ''
+    },
+    sideBar: {
+      main: '',
+      sub: 'log in to access secure routes'
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {
