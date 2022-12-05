@@ -1,3 +1,4 @@
+<p class="lead">Already a member? Please <a routerLink="/login">log in</a>, instead.</p>
 <form (ngSubmit)="onRegisterSubmit()" method="post" role="form">
   <div *ngIf="formError" class="alert alert-danger">
     {{formError}}

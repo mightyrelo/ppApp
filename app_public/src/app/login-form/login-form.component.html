@@ -1,3 +1,4 @@
+<p class="lead">Not yet a member? Please <a routerLink="/register">register</a> first.</p>
 <form (ngSubmit)="onLoginSubmit()" method="post" role="form">
   <div *ngIf="formError" class="alert alert-danger">
     {{formError}}
