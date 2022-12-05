@@ -11,8 +11,6 @@ import { UserDataService } from './user-data.service';
 })
 export class AuthenticationService {
 
-  private apiBaseUrl = 'http://localhost:3000/api';
-
   constructor(
     @Inject(BROWSER_STORAGE) private storage: Storage,
     private userDataService: UserDataService
@@ -39,6 +37,24 @@ export class AuthenticationService {
 
   public logout() : void {
     this.storage.removeItem('ppApp-token');
+  }
+
+  public isLoggedIn() : boolean {
+    const token: string = this.readToken();
+    if(token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return (payload.exp > (Date.now()/1000));
+    }
+    return false;
+  }
+
+  public getCurrentUser(): User {
+    if(this.isLoggedIn()) {
+      const token = this.readToken();
+      const {name, email} = JSON.parse(atob(token.split('.')[1]));
+      return {name, email} as User;
+    }
+
   }
 }
 
