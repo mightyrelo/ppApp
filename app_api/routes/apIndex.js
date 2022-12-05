@@ -2,9 +2,18 @@
 for the level. For the collection level we define read and create, for document we define read,update and delete. This pattern repeats itself for a subdoc */
 const express = require('express');
 const router = express.Router();
+const {expressjwt: jwt} = require('express-jwt');
+const auth = jwt({
+  secret: 'thisIsSecret',
+  algorithms:  ["RS256", "HS256"],
+  userProperty: 'payload'
+});
+
+
 const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
 const authCtrl = require('../controllers/authentication');
+
 
 //model/collection routes
 //list
@@ -24,7 +33,7 @@ router
 router
   .route('/ms/:mId/sms')
   .get(smCtrl.smReadAll)
-  .post(smCtrl.smCreateOne);
+  .post(auth, smCtrl.smCreateOne);
 router
   .route('/ms/:mId/sms/new')
   .get(smCtrl.smCreateOne)

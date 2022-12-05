@@ -26,6 +26,7 @@ const doCreateSM = (req, res, m) => {
 const smCreateOne = (req, res) => {
     if(!req.body.b1 || !req.body.b2) {sendJSONResponse(res, 400, {"message":"all fields required"}); return}
     if(!req.params.mId) {sendJSONResponse(res, 400, {"message":"m id required"});return}
+    console.log('creating sm...', req.payload);
     M
      .findById(req.params.mId)
      .exec((err, m) => {
@@ -41,8 +42,8 @@ const smReadAll = (req, res) => {
      .findById(req.params.mId)
      .select('a1 sms')
      .exec((err, m)=> {
-        if(err) {sendJSONResponse(res, 400, err);}
-        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"});}
+        if(err) {sendJSONResponse(res, 400, err); return}
+        if(!m) {sendJSONResponse(res, 404, {"message":"m not found"}); return}
         const smS = m.sms;
         const response = {
             m: {
