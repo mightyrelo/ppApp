@@ -17,6 +17,7 @@ export class HistoryService {
       .subscribe((routerEvent: NavigationEnd) => {
         let url : string = routerEvent.urlAfterRedirects;
         this.urls.push(url);
+        console.log(url);
       });
   }
 
