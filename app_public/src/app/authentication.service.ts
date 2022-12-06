@@ -27,7 +27,7 @@ export class AuthenticationService {
 
   public register(user: User) : Promise<any> {
     return this.userDataService.register(user)
-      .then((authResp: AuthResponse) => this.saveToken(authResp.token));   
+      .then((authResp: AuthResponse) => console.log('new user registered.'));   
   }
 
   public login(user: User) : Promise<any> {
