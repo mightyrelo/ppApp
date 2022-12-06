@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
+import { HistoryService } from '../history.service';
 
 
 @Component({
@@ -21,18 +22,19 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private historyService: HistoryService
   ) { }
 
   public onRegisterSubmit() : void {
+    console.log('hello');
     if(!this.credentials.name || !this.credentials.email || !this.credentials.password) {
       this.formError = 'all fields required, leka gape!';
       return;
     }
     this.authService.register(this.credentials)
-      .then(() => {
-        this.router.navigateByUrl('/');
-      })
+      .then(() => {this.router.navigateByUrl(this.historyService.getPreviousUrl()); console.log('last url', this.historyService.getPreviousUrl());})
+      .catch((message) => this.formError = message);
   }
 
   ngOnInit() {
