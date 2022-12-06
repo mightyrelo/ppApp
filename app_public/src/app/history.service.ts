@@ -24,4 +24,11 @@ export class HistoryService {
     const length = this.urls.length;
     return length > 1 ? this.urls[length-2] : '/'; 
   }
+
+  public getLastNonLoginUrl(): string {
+    const exclude: string[] = ['/login', '/register'];
+    const filtered = this.urls.filter(url => !exclude.includes(url));
+    const length = filtered.length;
+    return length > 1 ? filtered[length -1] : '/';
+  }
 }

@@ -33,7 +33,7 @@ export class RegisterFormComponent implements OnInit {
       return;
     }
     this.authService.register(this.credentials)
-      .then(() => {this.router.navigateByUrl(this.historyService.getPreviousUrl()); console.log('last url', this.historyService.getPreviousUrl());})
+      .then(() => {this.router.navigateByUrl(this.historyService.getPreviousUrl());})
       .catch((message) => this.formError = message);
   }
 
