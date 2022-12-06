@@ -11,4 +11,5 @@ export class M {
     sms: SM[];
     duration: any[];
     user: String;
+    flaggedForDelete: boolean;
 }

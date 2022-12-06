@@ -25,12 +25,15 @@ export class MListComponent implements OnInit {
     facilities: [],
     sms: [],
     duration: [],
-    user: ''
+    user: '',
+    flaggedForDelete: false
   };
 
   public errorInForm = '';
 
   public ms: M[];
+
+  public delete = false;
   
   constructor(
     private mDataService: MDataService,
@@ -86,7 +89,27 @@ export class MListComponent implements OnInit {
     } else {
       this.errorInForm = 'all fields are required, leka gape';
     }
+  }
 
+  public flagged(id: string) : void {
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === id) {
+        this.ms[i].flaggedForDelete = true;
+      }
+    }
+  }
+  
+  public isFlagged(id: string) : boolean {
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === id) {
+        if(this.ms[i].flaggedForDelete) 
+        {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
   }
 
   ngOnInit() {
