@@ -60,6 +60,7 @@ export class MListComponent implements OnInit {
     this.formM.a5 = '';
     this.formM.facilities = [];
     this.openForm = false;
+    this.getMs();
   }
 
   private getUserName() : string {

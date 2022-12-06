@@ -51,6 +51,7 @@ export class MDataService {
   }
 
   public deleteMById(mId: string) : Promise<null> {
+    if(mId == null) {return null;}
     const url : string = `${this.apiBaseUrl}/ms/${mId}`;
     const httpOptions  = {
       headers: new HttpHeaders({
