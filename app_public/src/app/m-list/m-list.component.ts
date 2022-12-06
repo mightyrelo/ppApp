@@ -112,6 +112,14 @@ export class MListComponent implements OnInit {
     }
   }
 
+  public setFlagOff(id: string) : void {
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === id) {
+       this.ms[i].flaggedForDelete = false;
+      }
+    }
+  }
+
   ngOnInit() {
     this.getMs();
     //

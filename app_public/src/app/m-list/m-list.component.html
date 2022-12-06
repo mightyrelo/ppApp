@@ -52,7 +52,7 @@
       <i class="fa{{m.a2 < 5 ? 'r':'s' }} fa-star"></i>
       <a *ngIf="isLoggedIn()" class="btn float-right" (click)="flagged(m._id)">delete</a>
       <div *ngIf="isFlagged(m._id)">
-        <button (click)="delete=false" class="btn btn-primary float-right">cancel</button>
+        <button (click)="setFlagOff(m._id)" class="btn btn-primary float-right">cancel</button>
         <a routerLink="/ms/{{m._id}}/del"><button class="btn btn-primary float-right">are you sure?</button>
         </a>
       </div>
