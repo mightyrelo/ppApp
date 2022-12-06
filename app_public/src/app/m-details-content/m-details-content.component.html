@@ -36,9 +36,10 @@
             <div class="card-primary review-card">
               <div class="card-block">
                 <h2 class="card-title">SMs </h2>
-                <div class="row sm-button">
+                <div class="row sm-button" [ngSwitch]="isLoggedIn()">
                   <small>
-                    <button (click)="displayForm=true" class="btn-primary float-right">Add SM</button>
+                    <button (click)="displayForm=true" class="btn-primary float-right" *ngSwitchCase="true">add SM</button>
+                    <a routerLink="/login"><button class="btn-primary float-right" *ngSwitchDefault>log in to add SM</button></a>
                   </small>
                 </div>
                 <div *ngIf="displayForm" class="col-12 col-md-8">
@@ -62,7 +63,8 @@
                 <div *ngFor="let sm of dbM.sms | mostRecentFirst" class="row review">
                   <div class="col-12 no-gutters review-header">
                     <small class="reviewTimestamp"> {{sm.b3 | date : 'd MMMM yyyy HH:MM:SS'}} ----&gt;   </small>
-                    <small class="reviewTimestamp">{{sm.b2}}</small>
+                    <small class="reviewTimestamp">{{sm.b2}} --------&gt;</small>
+                    <small class="reviewTimestamp">{{sm.user}}</small>
                     <small> <a class="float-right" routerLink="/ms/{{dbM._id}}/sms/{{sm._id}}/del">delete</a></small>
                    </div>
                    <div class="col-12">

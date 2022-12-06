@@ -12,7 +12,8 @@ const sendJSONResponse = (res, code, content) => {
 const doCreateSM = (req, res, m) => {
     const formSM = {
         b1: req.body.b1,
-        b2: parseInt(req.body.b2)
+        b2: parseInt(req.body.b2),
+        user: req.body.user
     };
     m.sms.push(formSM);
     m.save((err, savedM) => {

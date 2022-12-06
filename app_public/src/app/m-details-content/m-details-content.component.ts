@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { M } from '../m';
 import {SM} from '../sm';
 import { SmDataService } from '../sm-data.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-m-details-content',
@@ -18,6 +19,7 @@ export class MDetailsContentComponent implements OnInit {
   public formSM : SM = {
     b1: '',
     b2: null,
+    user: ''
   };
 
   public formError = '';
@@ -26,7 +28,8 @@ export class MDetailsContentComponent implements OnInit {
   constructor(
 
     private smDataService : SmDataService,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private authService: AuthenticationService
   ) { }
 
   private smFormIsValid() : boolean {
@@ -41,14 +44,16 @@ export class MDetailsContentComponent implements OnInit {
     this.displayForm = false;
     this.formSM.b1 = '';
     this.formSM.b2 = null;
+    this.formSM.user = null;
     this.formError = '';
   }
 
   public onSMSubmit() : void {
+    this.formSM.user = this.getUserName();
     if(this.smFormIsValid()) {
       this.smDataService.postSM(this.dbM._id.toString(), this.formSM)
         .then((sm: SM) => {
-          console.log('sm saved', sm);
+          console.log('sm saved', sm);  
           //save sm on m
           let sms = this.dbM.sms.slice(0);
           sms.unshift(sm);
@@ -58,6 +63,16 @@ export class MDetailsContentComponent implements OnInit {
     } else {
       this.formError = 'all fields required, leka gape';
     }
+  }
+
+  public isLoggedIn() : boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  public getUserName() : string { 
+      const {name} =  this.authService.getCurrentUser();
+      return name ? name : 'guest';
+    
   }
 
   ngOnInit() : void {

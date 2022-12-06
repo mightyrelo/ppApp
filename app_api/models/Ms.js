@@ -11,7 +11,8 @@ const SMSchema = mongoose.Schema({
     b3: {
         type: Date,
         'default': Date.now()
-    }
+    },
+    user: String
 });
 
 //schema defines model
