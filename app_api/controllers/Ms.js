@@ -17,7 +17,8 @@ const mCreateOne = (req, res) => {
         a3: parseFloat(req.body.a3),
         a4: req.body.a4,
         a5: req.body.a5,
-        facilities: req.body.facilities.split(',')
+        facilities: req.body.facilities.split(','),
+        user: req.body.user
     };
     M
      .create(formM, (err, dbM) => {

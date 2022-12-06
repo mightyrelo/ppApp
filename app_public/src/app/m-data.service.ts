@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable,  Inject } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { M } from './m';
+import { BROWSER_STORAGE } from './storage';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class MDataService {
   private apiBaseUrl = environment.apiBaseUrl;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    @Inject(BROWSER_STORAGE) private storage: Storage
   ) { }
 
   public getMs() : Promise<M[]> {
@@ -36,8 +38,13 @@ export class MDataService {
 
   public postM(formM: M) : Promise<M> {
     const url : string = `${this.apiBaseUrl}/ms`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.storage.getItem('ppApp-token')}`
+      })
+    };
     return this.http
-      .post(url, formM)
+      .post(url, formM, httpOptions)
       .toPromise()
       .then(response => response as M)
       .catch(this.handleError);

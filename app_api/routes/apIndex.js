@@ -20,7 +20,7 @@ const authCtrl = require('../controllers/authentication');
 router
   .route('/ms')
   .get(mCtrl.mReadAll)
-  .post(mCtrl.mCreateOne);
+  .post(auth, mCtrl.mCreateOne);
 //instances/document routes
 router
   .route('/ms/:mId')

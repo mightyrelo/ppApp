@@ -40,7 +40,8 @@ const MSchema = mongoose.Schema({
     createdOn: {
         type: Date,
         'default': Date.now()
-    }
+    },
+    user: String
 });
 
 //create model by compiing schema

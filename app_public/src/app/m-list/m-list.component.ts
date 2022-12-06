@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { MDataService } from '../m-data.service';
 import { M } from '../m';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-m-list',
@@ -23,7 +24,8 @@ export class MListComponent implements OnInit {
     a5: '',
     facilities: [],
     sms: [],
-    duration: []
+    duration: [],
+    user: ''
   };
 
   public errorInForm = '';
@@ -32,7 +34,8 @@ export class MListComponent implements OnInit {
   
   constructor(
     private mDataService: MDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthenticationService
   ) { }
 
   private getMs(): void {
@@ -59,7 +62,17 @@ export class MListComponent implements OnInit {
     this.openForm = false;
   }
 
+  private getUserName() : string {
+    const {name} = this.authService.getCurrentUser();
+    return name ? name : 'guest';
+  }
+
+  public isLoggedIn() : boolean {
+    return this.authService.isLoggedIn();
+  }
+
   public onMSubmit() : void {
+    this.formM.user = this.getUserName();
     if(this.formIsValid()) {
       this.mDataService.postM(this.formM)
       .then(mDb => {

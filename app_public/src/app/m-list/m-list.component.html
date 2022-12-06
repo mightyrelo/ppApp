@@ -1,7 +1,9 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col-12" [ngSwitch]="isLoggedIn()">
     <small>
-      <button (click)="openForm=true" class="btn-primary" >Add M </button>
+      <button (click)="openForm=true" class="btn-primary" *ngSwitchCase="true">add M </button>
+      <a routerLink="/login"><button class="btn-primary" *ngSwitchDefault >log in to add M </button>
+      </a>
     </small>
   </div>
   <div *ngIf="openForm" class="col-12 col-md-8">
@@ -56,4 +58,5 @@
   <div class="facilities">
     <span *ngFor="let facility of m.facilities" class="badge badge-warning">{{facility}}</span>
   </div>
+  <small><span class="badge badge-pill badge-default float-right">{{m.user}}</span></small>
 </div>

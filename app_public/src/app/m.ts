@@ -10,4 +10,5 @@ export class M {
     facilities: String[];
     sms: SM[];
     duration: any[];
+    user: String;
 }
