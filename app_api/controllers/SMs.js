@@ -118,6 +118,7 @@ const smUpdateOne = (req, res) => {
     });
 };
 const smDeleteOne = (req, res) => {
+    console.log(req.params.mId, 'yyy', req.params.smId);
     if(!req.params.mId || !req.params.smId) {sendJSONResponse(res, 400, {"message":"both url params required"});return;}
     M
     .findById(req.params.mId)

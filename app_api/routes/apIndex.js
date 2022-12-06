@@ -26,7 +26,7 @@ router
   .route('/ms/:mId')
   .get(mCtrl.mReadOne)
   .put(mCtrl.mUpdateOne)
-  .delete(mCtrl.mDeleteOne);
+  .delete(auth, mCtrl.mDeleteOne);
 
 //submodel routes
 //list

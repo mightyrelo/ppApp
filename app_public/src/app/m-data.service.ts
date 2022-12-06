@@ -52,8 +52,13 @@ export class MDataService {
 
   public deleteMById(mId: string) : Promise<null> {
     const url : string = `${this.apiBaseUrl}/ms/${mId}`;
+    const httpOptions  = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.storage.getItem('ppApp-token')}`
+      })
+    };
     return this.http
-      .delete(url)
+      .delete(url, httpOptions)
       .toPromise()
       .then(response => response as any)
       .catch(this.handleError);

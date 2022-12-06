@@ -34,7 +34,9 @@ export class SmDataService {
   }
 
   public deleteSMByIds(mId: string, smId: string) : Promise<any> {
+    
     const url: string = `${this.apiBaseUrl}/ms/${mId}/sms/${smId}`;
+    console.log(url);
     return this.http
       .delete(url)
       .toPromise()

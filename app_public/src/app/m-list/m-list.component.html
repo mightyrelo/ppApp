@@ -50,7 +50,7 @@
       <i class="fa{{m.a2 < 3 ? 'r':'s' }} fa-star"></i>
       <i class="fa{{m.a2 < 4 ? 'r':'s' }} fa-star"></i>
       <i class="fa{{m.a2 < 5 ? 'r':'s' }} fa-star"></i>
-      <a class="float-right" routerLink="/ms/{{m._id}}/del">Delete</a>
+      <a *ngIf="isLoggedIn()" class="float-right" routerLink="/ms/{{m._id}}/del">Delete</a>
     </small>
   </h4>
   <small><span class="badge badge-pill badge-default float-right">{{m.a3 | appendS}}</span></small>
