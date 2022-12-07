@@ -27,6 +27,8 @@ export class MDetailsContentComponent implements OnInit {
 
   private ms: M[];
 
+  private m: M;
+
   public formError = '';
   public displayForm : boolean = false;
 
@@ -128,6 +130,12 @@ export class MDetailsContentComponent implements OnInit {
     }
   }
 
+  public getM(mId: string) : void {
+    this.mDataService.getMById(mId)
+      .then(response => this.m = response);
+
+  }
+
   public deleteSM(mId: string, smId: string) : void {
     console.log('deleting..,,');
     for(let i = 0; i < this.ms.length; i++) {
@@ -135,7 +143,7 @@ export class MDetailsContentComponent implements OnInit {
         for(let j = 0; j < this.ms[i].sms.length; j++){
           if(this.ms[i].sms[j]._id === smId) {
             this.smDataService.deleteSMByIds(mId, smId)
-             .then(resp => {if(!resp){console.log('deleted');}});
+             .then(resp => {if(!resp){console.log('deleted');this.getM(mId)}});
           }
         }
       }
