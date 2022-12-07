@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 
 import { M } from '../m';
@@ -37,7 +37,8 @@ export class MDetailsContentComponent implements OnInit {
     private smDataService : SmDataService,
     private route : ActivatedRoute,
     private authService: AuthenticationService,
-    private mDataService: MDataService
+    private mDataService: MDataService,
+    private router: Router
   ) { }
 
   private smFormIsValid() : boolean {
@@ -131,10 +132,12 @@ export class MDetailsContentComponent implements OnInit {
   }
 
   public getM(mId: string) : void {
+    console.log('getting...');
     this.mDataService.getMById(mId)
       .then(response => this.m = response);
 
   }
+
 
   public deleteSM(mId: string, smId: string) : void {
     console.log('deleting..,,');
@@ -143,7 +146,12 @@ export class MDetailsContentComponent implements OnInit {
         for(let j = 0; j < this.ms[i].sms.length; j++){
           if(this.ms[i].sms[j]._id === smId) {
             this.smDataService.deleteSMByIds(mId, smId)
-             .then(resp => {if(!resp){console.log('deleted');this.getM(mId)}});
+             .then(resp => {
+              if(!resp){
+                console.log('deleted');
+                let sms = this.dbM.sms.slice(0);
+                this.dbM.sms = sms;       
+              }});
           }
         }
       }
