@@ -56,8 +56,8 @@
                     </div> 
                     <div class="form-group">
                     </div>
-                    <button  type="submit" role="button" class="btn-primary sm-button">Add</button> 
-                    <button (click)="resetAndHideSMForm()" type="button" role="button" class="btn-primary sm-button">Cancel</button> 
+                    <button  type="submit" role="button" class="btn-primary sm-button">add</button> 
+                    <button (click)="resetAndHideSMForm()" type="button" role="button" class="btn-primary sm-button">cancel</button> 
                   </form>     
                 </div>
                 <div *ngFor="let sm of dbM.sms | mostRecentFirst" class="row review">
@@ -65,7 +65,11 @@
                     <small class="reviewTimestamp"> {{sm.b3 | date : 'd MMMM yyyy HH:MM:SS'}} ----&gt;   </small>
                     <small class="reviewTimestamp">{{sm.b2}} --------&gt;</small>
                     <small class="reviewTimestamp">{{sm.user}}</small>
-                    <small> <a class="float-right" routerLink="/ms/{{dbM._id}}/sms/{{sm._id}}/del">delete</a></small>
+                    <a *ngIf="isLoggedIn()" class="btn float-right" (click)="flagged(m._id, sm._id)">delete</a>
+                    <div *ngIf="isFlagged(m._id, sm._id)">
+                      <button (click)="setFlagOff(m._id, sm._id)" class="btn btn-primary float-right">cancel</button>
+                      <button (click)="deleteSM(m._id, sm._id)" class="btn btn-primary float-right">are you sure?</button>
+                    </div>                    
                    </div>
                    <div class="col-12">
                       <p>{{sm.b1}}</p>

@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+
 
 import { M } from '../m';
 import {SM} from '../sm';
 import { SmDataService } from '../sm-data.service';
 import { AuthenticationService } from '../authentication.service';
+import { MDataService } from '../m-data.service';
 
 @Component({
   selector: 'app-m-details-content',
@@ -17,10 +18,14 @@ export class MDetailsContentComponent implements OnInit {
   @Input() dbM: M;
 
   public formSM : SM = {
+    _id: '',
     b1: '',
     b2: null,
-    user: ''
+    user: '',
+    flaggedForDelete: false
   };
+
+  private ms: M[];
 
   public formError = '';
   public displayForm : boolean = false;
@@ -29,7 +34,8 @@ export class MDetailsContentComponent implements OnInit {
 
     private smDataService : SmDataService,
     private route : ActivatedRoute,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private mDataService: MDataService
   ) { }
 
   private smFormIsValid() : boolean {
@@ -75,8 +81,70 @@ export class MDetailsContentComponent implements OnInit {
     
   }
 
-  ngOnInit() : void {
-    this.route.paramMap
+  private getMs(): void {
+    this.mDataService.getMs()
+      .then(response => this.ms = response.reverse());
+  }
+
+  public flagged(mId: string, smId: string) : void {
+    this.getMs();
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === mId) {
+        for(let j = 0; j < this.ms[i].sms.length; j++){
+          if(this.ms[i].sms[j]._id === smId) {
+            this.ms[i].sms[j].flaggedForDelete = true;
+          }
+        }
+      }
+    }
+  }
+  
+  public isFlagged(mId: string, smId: string) : boolean {
+    this.getMs();
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === mId) {
+        for(let j = 0; j < this.ms[i].sms.length; j++){
+          if(this.ms[i].sms[j]._id === smId) {
+            if(this.ms[i].sms[j].flaggedForDelete) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public setFlagOff(mId: string, smId: string) : void {
+    this.getMs();
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === mId) {
+        for(let j = 0; j < this.ms[i].sms.length; j++){
+          if(this.ms[i].sms[j]._id === smId) {
+            this.ms[i].sms[j].flaggedForDelete = false;
+          }
+        }
+      }
+    }
+  }
+
+  public deleteSM(mId: string, smId: string) : void {
+    this.getMs();
+    for(let i = 0; i < this.ms.length; i++) {
+      if(this.ms[i]._id === mId) {
+        for(let j = 0; j < this.ms[i].sms.length; j++){
+          if(this.ms[i].sms[j]._id === smId) {
+            this.smDataService.deleteSMByIds(mId, smId)
+             .then(resp => {if(!resp){console.log('deleted');}});
+          }
+        }
+      }
+    }
+  }
+
+  ngOnInit() {
+   /* this.route.paramMap
     .pipe(
       switchMap((params: ParamMap) => {
        let mId = params.get('mId');
@@ -84,7 +152,7 @@ export class MDetailsContentComponent implements OnInit {
        let del = false;
        if(mId && smId) {
         del = true;
-        return this.smDataService.deleteSMByIds(mId, smId);
+        return 'hello';
        }
       })
     )
@@ -92,6 +160,6 @@ export class MDetailsContentComponent implements OnInit {
         console.log('deleted');
     });
    
+  }*/
   }
-
 }
