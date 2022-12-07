@@ -126,7 +126,7 @@ export class MListComponent implements OnInit {
     for(let i = 0; i < this.ms.length; i++) {
       if(this.ms[i]._id === id) {
        this.mDataService.deleteMById(id)
-         .then(resp => {if(!resp){console.log('deleted'); this.router.navigateByUrl('/')}});
+         .then(resp => {if(!resp){console.log('deleted');this.getMs()}});
       }
     }
   }
