@@ -87,7 +87,7 @@ export class MDetailsContentComponent implements OnInit {
   }
 
   public flagged(mId: string, smId: string) : void {
-    this.getMs();
+  
     for(let i = 0; i < this.ms.length; i++) {
       if(this.ms[i]._id === mId) {
         for(let j = 0; j < this.ms[i].sms.length; j++){
@@ -100,7 +100,7 @@ export class MDetailsContentComponent implements OnInit {
   }
   
   public isFlagged(mId: string, smId: string) : boolean {
-    this.getMs();
+  
     for(let i = 0; i < this.ms.length; i++) {
       if(this.ms[i]._id === mId) {
         for(let j = 0; j < this.ms[i].sms.length; j++){
@@ -117,7 +117,6 @@ export class MDetailsContentComponent implements OnInit {
   }
 
   public setFlagOff(mId: string, smId: string) : void {
-    this.getMs();
     for(let i = 0; i < this.ms.length; i++) {
       if(this.ms[i]._id === mId) {
         for(let j = 0; j < this.ms[i].sms.length; j++){
@@ -130,7 +129,7 @@ export class MDetailsContentComponent implements OnInit {
   }
 
   public deleteSM(mId: string, smId: string) : void {
-    this.getMs();
+    console.log('deleting..,,');
     for(let i = 0; i < this.ms.length; i++) {
       if(this.ms[i]._id === mId) {
         for(let j = 0; j < this.ms[i].sms.length; j++){
@@ -144,6 +143,7 @@ export class MDetailsContentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getMs();
    /* this.route.paramMap
     .pipe(
       switchMap((params: ParamMap) => {
