@@ -5,5 +5,6 @@ const EducationSchema = mongoose.Schema({
     qualification: String,
     term: String,
     interests: [String],
+    userId: String
 
 });

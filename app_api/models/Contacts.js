@@ -6,5 +6,6 @@ const ContactSchema = mongoose.Schema({
     facebook: String,
     twitter: String,
     instagram: [String],
+    userId: [String]
     
 });

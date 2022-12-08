@@ -6,5 +6,6 @@ const ProjectSchema = mongoose.Schema({
     term: String,
     language: String,
     tools: [String],
-    concepts: [String] 
+    concepts: [String],
+    userId: String 
 });

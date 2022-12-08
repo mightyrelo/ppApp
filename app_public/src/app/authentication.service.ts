@@ -54,7 +54,6 @@ export class AuthenticationService {
       const {name, email} = JSON.parse(atob(token.split('.')[1]));
       return {name, email} as User;
     }
-
   }
 }
 

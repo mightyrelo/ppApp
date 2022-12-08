@@ -6,5 +6,6 @@ const WorkSchema = mongoose.Schema({
     position: String,
     responsibilities: [String],
     contactPerson: String,
+    userId: String
 
 });
