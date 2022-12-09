@@ -11,12 +11,12 @@ const sendJSONResponse = (res, code, content) => {
 
 //collection endpoint
 const personalCreateOne = (req, res) => {
-    if(!req.body.name || !req.body.gender || !req.body.id || !req.body.languages || !req.body.passions || !req.body.maritalStatus || !req.body.nationality || !req.body.race)
+    if(!req.body.name || !req.body.gender || !req.body.idNo  || !req.body.languages || !req.body.passions || !req.body.maritalStatus || !req.body.nationality || !req.body.race)
       {sendJSONResponse(res, 400, {"message":"all fields required"}); return}
     const formPersonal = {
         name: req.body.name,
         gender: req.body.gender,
-        idNo: parseInt(req.body.id),
+        idNo: parseInt(req.body.idNo),
         languages: req.body.languages.split(','),
         passions: req.body.passions.split(','),
         userId: req.body.user,
