@@ -10,7 +10,7 @@ const sendJSONResponse = (res, code, content) => {
 };
 
 //collection endpoint
-const personalCreateOne = (req, res) => {
+const personalsCreateOne = (req, res) => {
     if(!req.body.name || !req.body.gender || !req.body.idNo  || !req.body.languages || !req.body.passions || !req.body.maritalStatus || !req.body.nationality || !req.body.race)
       {sendJSONResponse(res, 400, {"message":"all fields required"}); return}
     const formPersonal = {
@@ -31,7 +31,7 @@ const personalCreateOne = (req, res) => {
      })
 };
 
-const personalReadAll = (req, res) => {
+const personalsReadAll = (req, res) => {
     Personal
      .find()
      .exec((err, personals)=>{
@@ -44,7 +44,7 @@ const personalReadAll = (req, res) => {
 
 
 //document end point
-const personalReadOne = (req, res) => {
+const personalsReadOne = (req, res) => {
     const personalId = req.params.personalId;
     if(!personalId) {sendJSONResponse(res, 400, {"message":"personal id required"}); return}
     Personal
@@ -56,7 +56,7 @@ const personalReadOne = (req, res) => {
      });
 };
 
-const doUpdatePersonal = (req, res, personal) => {
+const doUpdatePersonals = (req, res, personal) => {
     personal.name = req.body.name;
     personal.gender = req.body.gender;
     personal.nationality = req.body.nationality;
@@ -72,20 +72,20 @@ const doUpdatePersonal = (req, res, personal) => {
     })
 }
 
-const personalUpdateOne = (req, res) => {
+const personalsUpdateOne = (req, res) => {
     if(!req.params.personalId) {sendJSONResponse(res, 400, {"message":"personal id required"}); return}
-    M
+    Personal
      .findById(req.params.personalId)
      .exec((err, personal)=> {
         if(err) {sendJSONResponse(res, 400, err); return}
         if(!personal) {sendJSONResponse(res, 404, {"message":"personal not found"}); return}
-        doUpdatePersonal(req, res, personal);
+        doUpdatePersonals(req, res, personal);
      });
 };
 
-const personalDeleteOne = (req, res) => {
+const personalsDeleteOne = (req, res) => {
     if(!req.params.personalId) {sendJSONResponse(res, 400, {"message":"personal id required"}); return;}
-    M
+    Personal
      .findByIdAndRemove(req.params.personalId)
      .exec((err, personal) => {
         if(err) {sendJSONResponse(res, 404, err); return;}
@@ -95,9 +95,9 @@ const personalDeleteOne = (req, res) => {
 
 
 module.exports = {
-    personalCreateOne,
-    personalReadAll,
-    personalReadOne,
-    personalUpdateOne,
-    personalDeleteOne,
+    personalsCreateOne,
+    personalsReadAll,
+    personalsReadOne,
+    personalsUpdateOne,
+    personalsDeleteOne,
 };

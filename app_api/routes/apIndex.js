@@ -54,14 +54,14 @@ router.post('/login', authCtrl.login);
 //list
 router
   .route('/personals')
-  .get(personalCtrl.personalReadAll)
-  .post(auth, personalCtrl.personalCreateOne);
+  .get(personalCtrl.personalsReadAll)
+  .post(auth, personalCtrl.personalsCreateOne);
 //instances/document routes
 router
   .route('/personals/:personalId')
-  .get(personalCtrl.personalReadOne)
-  .put(personalCtrl.personalUpdateOne)
-  .delete(auth, personalCtrl.personalDeleteOne);
+  .get(personalCtrl.personalsReadOne)
+  .put(personalCtrl.personalsUpdateOne)
+  .delete(auth, personalCtrl.personalsDeleteOne);
 
 
 
