@@ -10,46 +10,10 @@ const auth = jwt({
 });
 
 
-const mCtrl = require('../controllers/Ms');
-const smCtrl = require('../controllers/SMs');
 const personalCtrl = require('../controllers/Personals');
 const authCtrl = require('../controllers/authentication');
 
 
-//model/collection routes
-//list
-router
-  .route('/ms')
-  .get(mCtrl.mReadAll)
-  .post(auth, mCtrl.mCreateOne);
-//instances/document routes
-router
-  .route('/ms/:mId')
-  .get(mCtrl.mReadOne)
-  .put(mCtrl.mUpdateOne)
-  .delete(auth, mCtrl.mDeleteOne);
-
-//submodel routes
-//list
-router
-  .route('/ms/:mId/sms')
-  .get(smCtrl.smReadAll)
-  .post(auth, smCtrl.smCreateOne);
-router
-  .route('/ms/:mId/sms/new')
-  .get(smCtrl.smCreateOne)
-//instance
-router
-  .route('/ms/:mId/sms/:smId')
-  .get(smCtrl.smReadOne)
-  .put(smCtrl.smUpdateOne)
-  .delete(smCtrl.smDeleteOne);
-
-router.post('/register', authCtrl.register);
-router.post('/login', authCtrl.login);
-
-
-/////////
 //model/collection routes
 //list
 router
