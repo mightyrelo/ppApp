@@ -57,17 +57,33 @@ const personalsReadOne = (req, res) => {
 };
 
 const doUpdatePersonals = (req, res, personal) => {
-    personal.name = req.body.name;
-    personal.gender = req.body.gender;
-    personal.nationality = req.body.nationality;
-    personal.maritalStatus = req.body.maritalStatus;
-    personal.idNo = parseInt(req.body.idNo);
-    personal.languages = req.body.languages.split(',');
-    personal.passions = req.body.passions.split(',');
-    personal.race = req.body.race;
+    if(req.body.name) {
+        personal.name = req.body.name;
+    }
+    if(req.body.gender) {
+        personal.gender = req.body.gender;
+    }
+    if(req.body.nationality) {
+        personal.nationality = req.body.nationality;
+    }
+    if(req.body.race) {
+        personal.race = req.body.race;
+    }
+    if(req.body.maritalStatus) {
+        personal.maritalStatus = req.body.maritalStatus;
+    }
+    if(req.body.idNo) {
+        personal.idNo = parseInt(req.body.idNo);
+    }
+    if(req.body.languages) {
+       // personal.languages = req.body.languages.split(',');
+    }
+    if(req.body.passions){
+        //personal.passions = req.body.passions.split(',');
+    }
     personal.save((err, savedPersonal)=>{
-        if(err) {sendJSONResponse(res, 400, err);}
-        if(!savedPersonal) {sendJSONResponse(res, 404, {"message":"personal could not be updated"});}
+        if(err) {sendJSONResponse(res, 400, err); return}
+        if(!savedPersonal) {sendJSONResponse(res, 404, {"message":"personal could not be updated"}); return}
         sendJSONResponse(res, 200, savedPersonal);            
     })
 }
