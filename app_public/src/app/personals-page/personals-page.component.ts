@@ -9,12 +9,12 @@ export class PersonalsPageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'List of Personal Infos',
-      strapline: ''
+      title: 'Personal Info',
+      strapline: 'what makes you, you?'
     },
     sideBar: {
-      main: '',
-      sub: ''
+      main: 'main',
+      sub: 'side'
     }
   };
 

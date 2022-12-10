@@ -1,4 +1,5 @@
 export class Personals {
+    _id: string
     name: string;
     gender: string;
     idNo: number;
@@ -7,5 +8,6 @@ export class Personals {
     passions: string[];
     maritalStatus: string;
     userId: string;
-    nationality: String; 
+    nationality: string;
+    flaggedForDeletion: boolean;  
 }

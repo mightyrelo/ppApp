@@ -25,9 +25,20 @@ export class PersonalsDataService {
 
   }
 
+  public addPersonals(formPersonals: Personals) : Promise<Personals> {
+    const url: string = `${this.apiBaseUrl}/personals`;
+    return this.http
+      .post(url, formPersonals)
+      .toPromise()
+      .then(response => response as Personals)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any) : Promise<any> {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);
   }
+
+
 
 }

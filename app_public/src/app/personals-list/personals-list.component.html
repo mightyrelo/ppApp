@@ -1,10 +1,52 @@
 <div class="row">
+  
   <div class="col-12" >
     <small>
-      <button  class="btn-primary" >add Personals </button>
-      <a routerLink="/login"><button class="btn-primary"  >log in to add Personal </button>
+      <button *ngIf="isLoggedIn()" class="btn-primary" (click)="openForm=true">add Personals </button>
+      <a *ngIf="!isLoggedIn()" routerLink="/login"><button class="btn-primary"  >log in to add Personal </button>
       </a>
     </small>
+  </div>
+  <div *ngIf="openForm" class="col-12 col-md-8">
+    <form (ngSubmit)="onPersonalsSubmit()" >
+      <div role="alert" *ngIf="errorInForm" class="alert alert-danger">
+        {{errorInForm}}
+      </div> 
+      <div class="form-group">
+        <label for="name">Full Names</label>
+        <input class="form-control" id="name" name="name" type="text" placeholder="" [(ngModel)]="formPersonals.name">
+     </div> 
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input class="form-control" id="gender" name="gender" type="text" placeholder="" [(ngModel)]="formPersonals.gender">
+     </div> 
+      <div class="form-group">
+        <label for="idNo">ID No</label>
+        <input class="form-control" id="idNo" name="idNo" type="text" placeholder="" [(ngModel)]="formPersonals.idNo">
+     </div> 
+     <div class="form-group">
+      <label for="nationality">Nationality</label>
+      <input class="form-control" type="text" id="nationality" name="nationality" [(ngModel)]="formPersonals.nationality">
+     </div>
+     <div class="form-group">
+      <label for="maritalStatus">Marital Status</label>
+      <input class="form-control" type="text" id="maritalStatus" name="maritalStatus" [(ngModel)]="formPersonals.maritalStatus">
+     </div> 
+    <div class="form-group">
+        <label for="race">Race</label>
+        <input class="form-control" id="race" name="race" type="text" placeholder="" [(ngModel)]="formPersonals.race">
+     </div> 
+    <div class="form-group">
+        <label for="languages">Languages</label>
+        <input class="form-control" id="languages" name="languages" type="text" placeholder="" [(ngModel)]="formPersonals.languages">
+     </div> 
+    <div class="form-group">
+        <label for="passions">Passions</label>
+        <input class="form-control" id="passions" name="passions" type="text" placeholder="" [(ngModel)]="formPersonals.passions">
+     </div> 
+      <button type="submit" role="button" class="btn-primary">add</button> 
+      <button (click)="resetAndHidePersonalForm()" type="button" role="button" class="btn-primary">cancel</button> 
+    </form>     
   </div>
 </div> 
 <div *ngFor="let personal of personals" class="card">
@@ -12,10 +54,10 @@
    </div>
    <h4> <a routerLink="/personals/{{personals._id}}">{{personal.name}}</a>
     <small>&nbsp;
-      <a  style="font-size: 0.8em" class="btn float-right" >delete</a>
-      <div >
-        <button style="font-size: 0.7em"  class="btn btn-primary float-right">cancel</button>
-        <button style="font-size: 0.7em"  class="btn btn-primary float-right">are you sure?</button>
+      <a *ngIf="isLoggedIn()" (click)="setFlag(personal._id)" style="font-size: 0.8em" class="btn float-right" >delete</a>
+      <div *ngIf="isFlagged(personal._id)">
+        <button (click)="setOffFlag(personal._id)" style="font-size: 0.7em"  class="btn btn-primary float-right">cancel</button>
+        <button (click)="deletePersonals()" style="font-size: 0.7em"  class="btn btn-primary float-right">are you sure?</button>
       </div>
     </small>
   </h4>
