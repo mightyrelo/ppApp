@@ -21,6 +21,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { PersonalsPageComponent } from './personals-page/personals-page.component';
+import { PersonalsListComponent } from './personals-list/personals-list.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     RegisterPageComponent,
     LoginPageComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    PersonalsPageComponent,
+    PersonalsListComponent
   ],
   imports: [
     BrowserModule,

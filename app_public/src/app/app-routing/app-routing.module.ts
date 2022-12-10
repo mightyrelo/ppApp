@@ -9,6 +9,7 @@ import { MListComponent } from '../m-list/m-list.component';
 import { MDetailsContentComponent } from '../m-details-content/m-details-content.component';
 import { RegisterPageComponent } from '../register-page/register-page.component';
 import { LoginPageComponent } from '../login-page/login-page.component';
+import { PersonalsPageComponent } from '../personals-page/personals-page.component';
 
 const routes : Routes = 
   [{
@@ -35,7 +36,10 @@ const routes : Routes =
 }, {
   path: 'login',
   component: LoginPageComponent, 
-}];
+}, {
+  path: 'personals',
+  component: PersonalsPageComponent, 
+}] ;
 
 @NgModule({
   declarations: [],
