@@ -119,6 +119,11 @@ export class PersonalsListComponent implements OnInit {
     this.errorInForm = ''; 
   }
 
+  public deletePersonals(pId: string) : void{
+    this.persDataService.deletePesonalsById(pId)
+    .then(resp => {if(!resp){console.log('deleted');this.readPersonals()}});
+  }
+
   ngOnInit() {
     this.readPersonals();
   }

@@ -42,12 +42,20 @@ export class PersonalsDataService {
   }
 
   public getPersonalsById(persId: string) : Promise<Personals> {
-    console.log('decide');
     const url = `${this.apiBaseUrl}/personals/${persId}`;
     return this.http
       .get(url)
       .toPromise()
       .then(response => response as Personals)
+      .catch(this.handleError);
+  }
+
+  public deletePesonalsById(persId: string) : Promise<any> {
+    const url = `${this.apiBaseUrl}/personals/${persId}`;
+    return this.http
+      .delete(url)
+      .toPromise()
+      .then(res => res as any)
       .catch(this.handleError);
   }
 
