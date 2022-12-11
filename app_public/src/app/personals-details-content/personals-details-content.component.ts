@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Personals } from '../personals';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-personals-details-content',
@@ -21,7 +23,10 @@ export class PersonalsDetailsContentComponent implements OnInit {
     }
   };
 
-  constructor() { }
+  constructor(
+    private authService: AuthenticationService,
+  ) { }
+
 
   ngOnInit() {
   }

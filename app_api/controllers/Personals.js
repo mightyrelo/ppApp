@@ -19,7 +19,7 @@ const personalsCreateOne = (req, res) => {
         idNo: parseInt(req.body.idNo),
         languages: req.body.languages.split(','),
         passions: req.body.passions.split(','),
-        userId: req.body.user,
+        userId: req.body.userId,
         nationality: req.body.nationality,
         race: req.body.race
     };

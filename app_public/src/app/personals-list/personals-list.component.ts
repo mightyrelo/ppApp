@@ -40,7 +40,7 @@ export class PersonalsListComponent implements OnInit {
   public readPersonals(): void {
     
     this.persDataService.readPersonals()
-      .then((response) => {this.personals = response;});
+      .then((response) => {this.personals = response.reverse();});
   }
 
   public isLoggedIn() : boolean {
@@ -85,11 +85,17 @@ export class PersonalsListComponent implements OnInit {
     }
   }
 
+  private getUserName() : string {
+    const {name} = this.authService.getCurrentUser();
+    return name ? name : 'Guest'
+  }
+
   public onPersonalsSubmit() : void {
+    this.formPersonals.userId = this.getUserName();
+    
     if(this.formIsValid()) {
       this.persDataService.addPersonals(this.formPersonals)
-        .then(dBPers => {
-          console.log('personals saved', dBPers);
+        .then(dBPers => {          
           let pers = this.personals.slice(0);
           pers.unshift(dBPers);
           this.personals = pers;
@@ -112,8 +118,6 @@ export class PersonalsListComponent implements OnInit {
     this.openForm = false;
     this.errorInForm = ''; 
   }
-
-  
 
   ngOnInit() {
     this.readPersonals();
