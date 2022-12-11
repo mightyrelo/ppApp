@@ -23,6 +23,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { PersonalsPageComponent } from './personals-page/personals-page.component';
 import { PersonalsListComponent } from './personals-list/personals-list.component';
+import { PersonalsDetailsPageComponent } from './personals-details-page/personals-details-page.component';
+import { PersonalsDetailsContentComponent } from './personals-details-content/personals-details-content.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { PersonalsListComponent } from './personals-list/personals-list.componen
     LoginFormComponent,
     RegisterFormComponent,
     PersonalsPageComponent,
-    PersonalsListComponent
+    PersonalsListComponent,
+    PersonalsDetailsPageComponent,
+    PersonalsDetailsContentComponent
   ],
   imports: [
     BrowserModule,

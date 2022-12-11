@@ -3,7 +3,7 @@
   <div class="col-12" >
     <small>
       <button *ngIf="isLoggedIn()" class="btn-primary" (click)="openForm=true">add Personals </button>
-      <a *ngIf="!isLoggedIn()" routerLink="/login"><button class="btn-primary"  >log in to add Personal </button>
+      <a *ngIf="!isLoggedIn()" routerLink="/login"><button class="btn-primary">log in to add Personal </button>
       </a>
     </small>
   </div>
@@ -52,7 +52,7 @@
 <div *ngFor="let personal of personals" class="card">
    <div class="card-block"> 
    </div>
-   <h4> <a routerLink="/personals/{{personals._id}}">{{personal.name}}</a>
+   <h4> <a routerLink="/personals/{{personal._id}}">{{personal.name}}</a>
     <small>&nbsp;
       <a *ngIf="isLoggedIn()" (click)="setFlag(personal._id)" style="font-size: 0.8em" class="btn float-right" >delete</a>
       <div *ngIf="isFlagged(personal._id)">

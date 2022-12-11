@@ -9,12 +9,12 @@ export class HomePageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'Home',
-      strapline: 'This is the home page'
+      title: 'ppApp',
+      strapline: '-  Your (p)ersonal (p)rofile (App)'
     },
     sideBar: {
-      main: 'Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app ',
-      sub: 'Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app '
+      main: 'Looking to create a personal profile or update one for an upcoming job application? Or have you just secured that qualification and are looking to update your profile. ppApp was created to help job seekers get organized in their hunt for pap!',
+      sub: 'Let ppApp help you collate personal, education, work and skills information as and when you upgrade them. Plus have the comfort of knowing that your information is globally accessible and can be printed, downloaded or updated at any given time '
     }
   };
 

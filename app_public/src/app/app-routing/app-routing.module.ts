@@ -10,6 +10,7 @@ import { MDetailsContentComponent } from '../m-details-content/m-details-content
 import { RegisterPageComponent } from '../register-page/register-page.component';
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { PersonalsPageComponent } from '../personals-page/personals-page.component';
+import { PersonalsDetailsPageComponent } from '../personals-details-page/personals-details-page.component';
 
 const routes : Routes = 
   [{
@@ -39,6 +40,9 @@ const routes : Routes =
 }, {
   path: 'personals',
   component: PersonalsPageComponent, 
+}, {
+  path: 'personals/:personalsId',
+  component: PersonalsDetailsPageComponent, 
 }] ;
 
 @NgModule({
