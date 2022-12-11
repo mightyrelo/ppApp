@@ -21,7 +21,8 @@ const personalsCreateOne = (req, res) => {
         passions: req.body.passions.split(','),
         userId: req.body.userId,
         nationality: req.body.nationality,
-        race: req.body.race
+        race: req.body.race,
+        race: req.body.maritalStatus
     };
     Personal
      .create(formPersonal, (err, dbPersonal) => {
