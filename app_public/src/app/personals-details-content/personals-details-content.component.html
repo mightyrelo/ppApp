@@ -1,3 +1,45 @@
-<p>
-  personals-details-content works!
-</p>
+
+  <div class="row"> 
+    <div class="col-12 col-md-6">
+     <p class="rating">
+       <i class="fas fa-star"></i>
+       <i class="fas fa-star"> </i>
+       <i class="fas fa-star"> </i>
+       <i class="fas fa-star"> </i>
+       <i class="far fa-star"> </i>
+     </p>
+     <p>{{dbPers.name}}</p>
+     <div class="card card-primary">
+       <div class="card-block">
+         <h2 class="card-title">Personal Info </h2>
+         <p class="card-text">{{dbPers.idNo}}</p>
+         <p class="card-text">{{dbPers.gender}}</p>
+         <p class="card-text">{{dbPers.nationality}}</p>
+         <p class="card-text">{{dbPers.maritalStatus}}</p>
+         <p class="card-text">{{dbPers.race}}</p>
+         </div>
+     </div>
+     <div class="card card-primary">
+        <div class="card-block">
+          <h2 class="card-title">Languages </h2>
+          <span *ngFor="let language of dbPers.languages" class="badge badge-warning"> <i class="fa fa-check"> </i>&nbsp; {{language}} </span>
+          &nbsp;
+        </div>
+     </div>
+     <div class="card card-primary">
+        <div class="card-block">
+          <h2 class="card-title">Passions </h2>
+          <span *ngFor="let passion of dbPers.passions" class="badge badge-warning"> <i class="fa fa-check"> </i>&nbsp; {{passion}} </span>
+          &nbsp;
+        </div>
+     </div>
+    </div>
+    <div class="col-12 col-md-6 location-map">
+      <div class="card card-primary">
+        <div class="card-block">
+          <h2 class="card-title">Your Picture </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+     

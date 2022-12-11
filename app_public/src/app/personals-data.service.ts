@@ -41,6 +41,16 @@ export class PersonalsDataService {
       .catch(this.handleError);
   }
 
+  public getPersonalsById(persId: string) : Promise<Personals> {
+    console.log('decide');
+    const url = `${this.apiBaseUrl}/personals/${persId}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as Personals)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any) : Promise<any> {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);

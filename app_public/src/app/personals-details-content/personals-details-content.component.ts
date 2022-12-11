@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Personals } from '../personals';
 
 @Component({
   selector: 'app-personals-details-content',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personals-details-content.component.css']
 })
 export class PersonalsDetailsContentComponent implements OnInit {
+
+  @Input() dbPers : Personals
 
   public pageContent = {
     header: {
@@ -15,7 +18,7 @@ export class PersonalsDetailsContentComponent implements OnInit {
     sideBar: {
       main: 'personal details',
       sub: 'details for a specific person'
-    },
+    }
   };
 
   constructor() { }
