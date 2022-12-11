@@ -52,8 +52,13 @@ export class PersonalsDataService {
 
   public deletePesonalsById(persId: string) : Promise<any> {
     const url = `${this.apiBaseUrl}/personals/${persId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.storage.getItem('ppApp-token')}`
+      })
+    };
     return this.http
-      .delete(url)
+      .delete(url,httpOptions)
       .toPromise()
       .then(res => res as any)
       .catch(this.handleError);
