@@ -64,7 +64,7 @@ export class PersonalsDetailsContentComponent implements OnInit {
       .then(dbPers => {
         console.log(dbPers);
         this.resetAndHidePersonalForm(); 
-        this.router.navigateByUrl(`/personals/${pId}`);
+        this.dbPers = dbPers;
       });
   }
 

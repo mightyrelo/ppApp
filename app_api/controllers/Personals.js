@@ -22,7 +22,7 @@ const personalsCreateOne = (req, res) => {
         userId: req.body.userId,
         nationality: req.body.nationality,
         race: req.body.race,
-        race: req.body.maritalStatus
+        maritalStatus: req.body.maritalStatus
     };
     Personal
      .create(formPersonal, (err, dbPersonal) => {
@@ -80,7 +80,7 @@ const doUpdatePersonals = (req, res, personal) => {
       personal.languages = req.body.languages;
     }
     if(req.body.passions){
-       // personal.passions = req.body.passions.split(',');
+        personal.passions = req.body.passions;
     }
     personal.save((err, savedPersonal)=>{
         if(err) {sendJSONResponse(res, 400, err); return}

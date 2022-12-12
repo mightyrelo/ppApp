@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-12" >
       <small>
-        <button *ngIf="isLoggedIn()" class="btn-primary" (click)="openForm=true">edit Personals </button>
-        <a *ngIf="!isLoggedIn()" routerLink="/login"><button class="btn-primary">log in to edit Personal </button>
+        <button *ngIf="isLoggedIn()" class="btn-primary" (click)="openForm=true">edit info </button>
+        <a *ngIf="!isLoggedIn()" routerLink="/login"><button class="btn-primary">log in to edit info</button>
         </a>
       </small>
     </div>
@@ -53,12 +53,12 @@
      <div class="card card-primary">
        <div class="card-block">
          <h2 class="card-title">Personal Info </h2>
-         <p class="card-text"><b> Full Names:</b> {{dbPers.name}}</p>
-         <p class="card-text"><b> ID No:</b> {{dbPers.idNo}}</p>
-         <p class="card-text"><b> Gender:</b>{{dbPers.gender}}</p>
-         <p class="card-text"><b> Nationality:</b> {{dbPers.nationality}}</p>
+         <p class="card-text"><b> Full Names    :</b> {{dbPers.name}}</p>
+         <p class="card-text"><b> ID No         :</b> {{dbPers.idNo}}</p>
+         <p class="card-text"><b> Gender        :</b> {{dbPers.gender}}</p>
+         <p class="card-text"><b> Nationality   :</b> {{dbPers.nationality}}</p>
          <p class="card-text"><b> Marital Status:</b> {{dbPers.maritalStatus}}</p>
-         <p class="card-text"><b> Race:</b> {{dbPers.race}}</p>
+         <p class="card-text"><b> Race          :</b> {{dbPers.race}}</p>
          </div>
      </div>
      <div class="card card-primary">
