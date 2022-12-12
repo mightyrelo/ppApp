@@ -11,6 +11,8 @@ import { RegisterPageComponent } from '../register-page/register-page.component'
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { PersonalsPageComponent } from '../personals-page/personals-page.component';
 import { PersonalsDetailsPageComponent } from '../personals-details-page/personals-details-page.component';
+import { EduListPageComponent } from '../edu-list-page/edu-list-page.component';
+import { EduDetailsPageComponent } from '../edu-details-page/edu-details-page.component';
 
 const routes : Routes = 
   [{
@@ -43,6 +45,12 @@ const routes : Routes =
 }, {
   path: 'personals/:personalsId',
   component: PersonalsDetailsPageComponent, 
+}, {
+  path: 'educations',
+  component: EduListPageComponent, 
+}, {
+  path: 'educations/:educationId',
+  component: EduDetailsPageComponent, 
 }] ;
 
 @NgModule({
