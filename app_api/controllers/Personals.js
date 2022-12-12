@@ -77,10 +77,10 @@ const doUpdatePersonals = (req, res, personal) => {
         personal.idNo = parseInt(req.body.idNo);
     }
     if(req.body.languages) {
-        personal.languages = req.body.languages.split(',');
+      personal.languages = req.body.languages;
     }
     if(req.body.passions){
-        personal.passions = req.body.passions.split(',');
+       // personal.passions = req.body.passions.split(',');
     }
     personal.save((err, savedPersonal)=>{
         if(err) {sendJSONResponse(res, 400, err); return}

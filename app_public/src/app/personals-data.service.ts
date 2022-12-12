@@ -50,6 +50,15 @@ export class PersonalsDataService {
       .catch(this.handleError);
   }
 
+  public editPersonals(pId: string, formPersonals: Personals) : Promise<Personals>{
+    const url = `${this.apiBaseUrl}/personals/${pId}`;
+    return this.http
+      .put(url, formPersonals)
+      .toPromise()
+      .then(response => response as Personals)
+      .catch(this.handleError);
+  }
+
   public deletePesonalsById(persId: string) : Promise<any> {
     const url = `${this.apiBaseUrl}/personals/${persId}`;
     const httpOptions = {
@@ -68,7 +77,4 @@ export class PersonalsDataService {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);
   }
-
-
-
 }
