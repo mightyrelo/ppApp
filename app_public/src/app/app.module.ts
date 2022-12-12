@@ -33,6 +33,10 @@ import { WorkListPageComponent } from './work-list-page/work-list-page.component
 import { WorkListContentComponent } from './work-list-content/work-list-content.component';
 import { WorkDetailsContentComponent } from './work-details-content/work-details-content.component';
 import { WorkDetailsPageComponent } from './work-details-page/work-details-page.component';
+import { ProjectListPageComponent } from './project-list-page/project-list-page.component';
+import { ProjectListContentComponent } from './project-list-content/project-list-content.component';
+import { ProjectDetailsContentComponent } from './project-details-content/project-details-content.component';
+import { ProjectDetailsPageComponent } from './project-details-page/project-details-page.component';
 
 
 @NgModule({
@@ -65,7 +69,11 @@ import { WorkDetailsPageComponent } from './work-details-page/work-details-page.
     WorkListPageComponent,
     WorkListContentComponent,
     WorkDetailsContentComponent,
-    WorkDetailsPageComponent
+    WorkDetailsPageComponent,
+    ProjectListPageComponent,
+    ProjectListContentComponent,
+    ProjectDetailsContentComponent,
+    ProjectDetailsPageComponent
   ],
   imports: [
     BrowserModule,

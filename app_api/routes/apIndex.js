@@ -16,6 +16,7 @@ const personalCtrl = require('../controllers/Personals');
 const authCtrl = require('../controllers/authentication');
 const eduCtrl = require('../controllers/Educations');
 const workCtrl = require('../controllers/Works');
+const projCtrl = require('../controllers/Projects');
 
 
 //model/collection routes
@@ -92,6 +93,20 @@ router
   .get(workCtrl.worksReadOne)
   .put(workCtrl.worksUpdateOne)
   .delete(auth, workCtrl.worksDeleteOne);
+
+
+//model/collection routes
+//list
+router
+  .route('/projects')
+  .get(projCtrl.projectsReadAll)
+  .post(auth, projCtrl.projectsCreateOne);
+//instances/document routes
+router
+  .route('/projects/:projectId')
+  .get(projCtrl.projectsReadOne)
+  .put(projCtrl.projectsUpdateOne)
+  .delete(auth, projCtrl.projectsDeleteOne);
 
 
 

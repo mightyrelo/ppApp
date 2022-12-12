@@ -9,3 +9,5 @@ const ProjectSchema = mongoose.Schema({
     concepts: [String],
     userId: String 
 });
+
+mongoose.model('Project', ProjectSchema);
