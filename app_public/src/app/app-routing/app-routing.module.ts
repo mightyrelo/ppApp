@@ -15,6 +15,8 @@ import { EduListPageComponent } from '../edu-list-page/edu-list-page.component';
 import { EduDetailsPageComponent } from '../edu-details-page/edu-details-page.component';
 import { WorkListPageComponent } from '../work-list-page/work-list-page.component';
 import { WorkDetailsPageComponent } from '../work-details-page/work-details-page.component';
+import { ProjectListPageComponent } from '../project-list-page/project-list-page.component';
+import { ProjectDetailsPageComponent } from '../project-details-page/project-details-page.component';
 
 const routes : Routes = 
   [{
@@ -59,6 +61,12 @@ const routes : Routes =
 }, {
   path: 'works/:workId',
   component: WorkDetailsPageComponent, 
+}, {
+  path: 'projects',
+  component: ProjectListPageComponent, 
+}, {
+  path: 'projects/:projectId',
+  component: ProjectDetailsPageComponent, 
 }] ;
 
 @NgModule({
