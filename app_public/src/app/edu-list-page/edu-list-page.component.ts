@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EduListPageComponent implements OnInit {
 
+public pageContent = {
+    header: {
+      title: 'Academic Info',
+      strapline: 'what qualifications have you attained?'
+    },
+    sideBar: {
+      main: 'academic history',
+      sub: 'qualifications are obtained from certain institutions'
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {
