@@ -60,13 +60,13 @@ const doUpdateEducations = (req, res, education) => {
         education.qualification = req.body.qualification;
     }
     if(req.body.startDate) {
-        personal.startDate = req.body.startDate;
+        education.startDate = req.body.startDate;
     }
     if(req.body.endDate) {
-        personal.endDate = req.body.endDate;
+        education.endDate = req.body.endDate;
     }
     if(req.body.interests) {
-      personal.interests = req.body.interests;
+      education.interests = req.body.interests;
     }
 
     education.save((err, savedEducation)=>{
@@ -83,7 +83,7 @@ const educationsUpdateOne = (req, res) => {
      .exec((err, education)=> {
         if(err) {sendJSONResponse(res, 400, err); return}
         if(!education) {sendJSONResponse(res, 404, {"message":"education not found"}); return}
-        doUpdatePersonals(req, res, education);
+        doUpdateEducations(req, res, education);
      });
 };
 
