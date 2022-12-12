@@ -73,7 +73,7 @@ router
   .post(auth, eduCtrl.educationsCreateOne);
 //instances/document routes
 router
-  .route('/educations/:educationlId')
+  .route('/educations/:educationId')
   .get(eduCtrl.educationsReadOne)
   .put(eduCtrl.educationsUpdateOne)
   .delete(auth, eduCtrl.educationsDeleteOne);
