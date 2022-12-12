@@ -25,6 +25,10 @@ import { PersonalsPageComponent } from './personals-page/personals-page.componen
 import { PersonalsListComponent } from './personals-list/personals-list.component';
 import { PersonalsDetailsPageComponent } from './personals-details-page/personals-details-page.component';
 import { PersonalsDetailsContentComponent } from './personals-details-content/personals-details-content.component';
+import { EduListPageComponent } from './edu-list-page/edu-list-page.component';
+import { EduListContentComponent } from './edu-list-content/edu-list-content.component';
+import { EduDetailsPageComponent } from './edu-details-page/edu-details-page.component';
+import { EduDetailsContentComponent } from './edu-details-content/edu-details-content.component';
 
 
 @NgModule({
@@ -49,7 +53,11 @@ import { PersonalsDetailsContentComponent } from './personals-details-content/pe
     PersonalsPageComponent,
     PersonalsListComponent,
     PersonalsDetailsPageComponent,
-    PersonalsDetailsContentComponent
+    PersonalsDetailsContentComponent,
+    EduListPageComponent,
+    EduListContentComponent,
+    EduDetailsPageComponent,
+    EduDetailsContentComponent
   ],
   imports: [
     BrowserModule,

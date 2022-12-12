@@ -14,6 +14,7 @@ const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
 const personalCtrl = require('../controllers/Personals');
 const authCtrl = require('../controllers/authentication');
+const eduCtrl = require('../controllers/Educations');
 
 
 //model/collection routes
@@ -62,6 +63,20 @@ router
   .get(personalCtrl.personalsReadOne)
   .put(personalCtrl.personalsUpdateOne)
   .delete(auth, personalCtrl.personalsDeleteOne);
+
+
+//model/collection routes
+//list
+router
+  .route('/educations')
+  .get(eduCtrl.educationsReadAll)
+  .post(auth, eduCtrl.educationsCreateOne);
+//instances/document routes
+router
+  .route('/educations/:educationlId')
+  .get(eduCtrl.educationsReadOne)
+  .put(eduCtrl.educationsUpdateOne)
+  .delete(auth, eduCtrl.educationsDeleteOne);
 
 
 
