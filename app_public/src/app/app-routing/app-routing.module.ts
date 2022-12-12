@@ -13,6 +13,8 @@ import { PersonalsPageComponent } from '../personals-page/personals-page.compone
 import { PersonalsDetailsPageComponent } from '../personals-details-page/personals-details-page.component';
 import { EduListPageComponent } from '../edu-list-page/edu-list-page.component';
 import { EduDetailsPageComponent } from '../edu-details-page/edu-details-page.component';
+import { WorkListPageComponent } from '../work-list-page/work-list-page.component';
+import { WorkDetailsPageComponent } from '../work-details-page/work-details-page.component';
 
 const routes : Routes = 
   [{
@@ -51,6 +53,12 @@ const routes : Routes =
 }, {
   path: 'educations/:educationId',
   component: EduDetailsPageComponent, 
+}, {
+  path: 'works',
+  component: WorkListPageComponent, 
+}, {
+  path: 'works/:workId',
+  component: WorkDetailsPageComponent, 
 }] ;
 
 @NgModule({

@@ -29,6 +29,10 @@ import { EduListPageComponent } from './edu-list-page/edu-list-page.component';
 import { EduListContentComponent } from './edu-list-content/edu-list-content.component';
 import { EduDetailsPageComponent } from './edu-details-page/edu-details-page.component';
 import { EduDetailsContentComponent } from './edu-details-content/edu-details-content.component';
+import { WorkListPageComponent } from './work-list-page/work-list-page.component';
+import { WorkListContentComponent } from './work-list-content/work-list-content.component';
+import { WorkDetailsContentComponent } from './work-details-content/work-details-content.component';
+import { WorkDetailsPageComponent } from './work-details-page/work-details-page.component';
 
 
 @NgModule({
@@ -57,7 +61,11 @@ import { EduDetailsContentComponent } from './edu-details-content/edu-details-co
     EduListPageComponent,
     EduListContentComponent,
     EduDetailsPageComponent,
-    EduDetailsContentComponent
+    EduDetailsContentComponent,
+    WorkListPageComponent,
+    WorkListContentComponent,
+    WorkDetailsContentComponent,
+    WorkDetailsPageComponent
   ],
   imports: [
     BrowserModule,
