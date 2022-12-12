@@ -15,6 +15,7 @@ const smCtrl = require('../controllers/SMs');
 const personalCtrl = require('../controllers/Personals');
 const authCtrl = require('../controllers/authentication');
 const eduCtrl = require('../controllers/Educations');
+const workCtrl = require('../controllers/Works');
 
 
 //model/collection routes
@@ -77,6 +78,20 @@ router
   .get(eduCtrl.educationsReadOne)
   .put(eduCtrl.educationsUpdateOne)
   .delete(auth, eduCtrl.educationsDeleteOne);
+
+
+//model/collection routes
+//list
+router
+  .route('/works')
+  .get(workCtrl.worksReadAll)
+  .post(auth, workCtrl.worksCreateOne);
+//instances/document routes
+router
+  .route('/works/:workId')
+  .get(workCtrl.worksReadOne)
+  .put(workCtrl.worksUpdateOne)
+  .delete(auth, workCtrl.worksDeleteOne);
 
 
 
