@@ -52,11 +52,14 @@
       </div>
     </small>
   </h4>
-  <small><span class="badge badge-pill badge-default float-right">{{contact.facebook}}</span></small>
-  <small><span class="badge badge-pill badge-default float-right">{{contact.instagram}}</span></small>
-  
+  <p><b>Facebook: </b><span class="badge badge-pill badge-default">{{contact.facebook}}</span></p>
+  <p><b>Instagram: </b><span class="badge badge-pill badge-default">{{contact.instagram}}</span></p>
+  <p><b>Twitter: </b><span class="badge badge-pill badge-default">{{contact.twitter}}</span></p>  
   <div class="facilities">
-    <span *ngFor="let cellphone of contact.cellphones" class="badge badge-warning">{{cellphone}}</span>
+    <p><b>Emails: </b><span *ngFor="let email of contact.emails" class="badge badge-warning">{{email}}</span></p>
   </div>
-  <small><span class="badge badge-pill badge-default float-right">{{contact.userId}}</span></small>
+  <div class="facilities">
+    <p><b>Cell numbers: </b><span *ngFor="let cellphone of contact.cellphones" class="badge badge-warning">{{cellphone}}</span></p>
+  </div>
+
 </div>

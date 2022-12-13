@@ -52,11 +52,12 @@
       </div>
     </small>
   </h4>
-  <small><span class="badge badge-pill badge-default float-right">{{project.description}}</span></small>
-  <small><span class="badge badge-pill badge-default float-right">{{project.term}}</span></small>
-  
+  <p class=""><b>Description: </b>{{project.description}}</p>
+  <p><b>Duration: </b><span class="badge badge-pill badge-default">{{project.term}}</span></p>
   <div class="facilities">
-    <span *ngFor="let concept of project.concepts" class="badge badge-warning">{{concept}}</span>
+    <p><b>Concepts: </b><span *ngFor="let concept of project.concepts" class="badge badge-warning">{{concept}}</span></p>
   </div>
-  <small><span class="badge badge-pill badge-default float-right">{{project.userId}}</span></small>
+  <div class="facilities">
+    <p><b>Tools: </b><span *ngFor="let tool of project.tools" class="badge badge-warning">{{tool}}</span></p>
+  </div>
 </div>
