@@ -17,6 +17,7 @@ const authCtrl = require('../controllers/authentication');
 const eduCtrl = require('../controllers/Educations');
 const workCtrl = require('../controllers/Works');
 const projCtrl = require('../controllers/Projects');
+const contactCtrl = require('../controllers/Contacts');
 
 
 //model/collection routes
@@ -107,6 +108,18 @@ router
   .get(projCtrl.projectsReadOne)
   .put(projCtrl.projectsUpdateOne)
   .delete(auth, projCtrl.projectsDeleteOne);
+//model/collection routes
+//list
+router
+  .route('/contacts')
+  .get(contactCtrl.contactsReadAll)
+  .post(auth, contactCtrl.contactsCreateOne);
+//instances/document routes
+router
+  .route('/contacts/:contactId')
+  .get(contactCtrl.contactsReadOne)
+  .put(contactCtrl.contactsUpdateOne)
+  .delete(auth, contactCtrl.contactsDeleteOne);
 
 
 

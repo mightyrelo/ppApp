@@ -37,6 +37,10 @@ import { ProjectListPageComponent } from './project-list-page/project-list-page.
 import { ProjectListContentComponent } from './project-list-content/project-list-content.component';
 import { ProjectDetailsContentComponent } from './project-details-content/project-details-content.component';
 import { ProjectDetailsPageComponent } from './project-details-page/project-details-page.component';
+import { ContactListPageComponent } from './contact-list-page/contact-list-page.component';
+import { ContactListContentComponent } from './contact-list-content/contact-list-content.component';
+import { ContactDetailsPageComponent } from './contact-details-page/contact-details-page.component';
+import { ContactDetailsContentComponent } from './contact-details-content/contact-details-content.component';
 
 
 @NgModule({
@@ -73,7 +77,11 @@ import { ProjectDetailsPageComponent } from './project-details-page/project-deta
     ProjectListPageComponent,
     ProjectListContentComponent,
     ProjectDetailsContentComponent,
-    ProjectDetailsPageComponent
+    ProjectDetailsPageComponent,
+    ContactListPageComponent,
+    ContactListContentComponent,
+    ContactDetailsPageComponent,
+    ContactDetailsContentComponent
   ],
   imports: [
     BrowserModule,

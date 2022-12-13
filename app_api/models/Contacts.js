@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
 const ContactSchema = mongoose.Schema({
-    cellphone: [String],
-    landline: String,
+    cellphones: [String],
+    emails: [String],
     facebook: String,
     twitter: String,
-    instagram: [String],
-    userId: [String]
+    instagram: String,
+    address: String,
+    userId: String
     
 });
+
+mongoose.model('Contact', ContactSchema);
