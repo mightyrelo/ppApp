@@ -56,12 +56,11 @@
       </div>
     </small>
   </h4>
-  <small><span class="badge badge-pill badge-default float-right">{{work.industry}}</span></small>
-  <small><span class="badge badge-pill badge-default float-right">{{work.position}}</span></small>
-  <p class="address">{{work.startDate}}</p>
-  <p class="address">{{work.endDate}}</p>
+  <p><b>Industry: </b><span class="badge badge-pill badge-default">{{work.industry}}</span></p>
+  <p><b>Position: </b><span class="badge badge-pill badge-default">{{work.position}}</span></p>
+  <p class="address"><b>Start Date: </b>{{work.startDate}}</p>
+  <p class="address"><b>End Date: </b>{{work.endDate}}</p>
   <div class="facilities">
-    <span *ngFor="let resp of work.responsibilities" class="badge badge-warning">{{resp}}</span>
+    <p><b>Duties: </b><span *ngFor="let resp of work.responsibilities" class="badge badge-warning">{{resp}}</span></p>
   </div>
-  <small><span class="badge badge-pill badge-default float-right">{{work.userId}}</span></small>
 </div>
