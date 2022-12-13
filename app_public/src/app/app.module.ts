@@ -41,6 +41,7 @@ import { ContactListPageComponent } from './contact-list-page/contact-list-page.
 import { ContactListContentComponent } from './contact-list-content/contact-list-content.component';
 import { ContactDetailsPageComponent } from './contact-details-page/contact-details-page.component';
 import { ContactDetailsContentComponent } from './contact-details-content/contact-details-content.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { ContactDetailsContentComponent } from './contact-details-content/contac
     ContactListPageComponent,
     ContactListContentComponent,
     ContactDetailsPageComponent,
-    ContactDetailsContentComponent
+    ContactDetailsContentComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,

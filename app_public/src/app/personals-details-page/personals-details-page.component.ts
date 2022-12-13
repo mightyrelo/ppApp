@@ -44,10 +44,9 @@ export class PersonalsDetailsPageComponent implements OnInit {
       )
       .subscribe((newPers: Personals) => {
         this.dbPers = newPers;
-        console.log(this.dbPers);
         this.pageContent.header.title = newPers.name;
-        this.pageContent.sideBar.main = `${newPers.name} is on ppApp because they are serious about putting pap on the table.`;
-        this.pageContent.sideBar.sub = `ppApp was made for people like ${newPers.name}`;
+        this.pageContent.sideBar.main = `${newPers.name} was born and raised in Soweto, Johannesburg and is currently a resident of Zuurbekom in Westonaria.`;
+        this.pageContent.sideBar.sub = `He began primary school education in 1996 and completed his high school at John Orr Technical High in 2006. After working as a service technician for an insurance company, ${newPers.name} he completed his bachelor's in 2021. He currently works as a software engineer and holds an executive position in an engineering services company.`;
       })
   }
 }
