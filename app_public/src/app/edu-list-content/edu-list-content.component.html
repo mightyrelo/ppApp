@@ -48,11 +48,10 @@
       </div>
     </small>
   </h4>
-  <small><span class="badge badge-pill badge-default float-right">{{edu.qualification}}</span></small>
-  <p class="address">{{edu.startDate}}</p>
-  <p class="address">{{edu.endDate}}</p>
+  <p><b>Qualification: </b><span class="badge badge-pill badge-default"> {{edu.qualification}}</span></p>
+  <p class="address"><b>Start Date: </b> {{edu.startDate}}</p>
+  <p class="address"><b>End Date: </b> {{edu.endDate}}</p>
   <div class="facilities">
-    <span *ngFor="let interest of edu.interests" class="badge badge-warning">{{interest}}</span>
+    <p><b>Interests: </b><span *ngFor="let interest of edu.interests" class="badge badge-warning">{{interest}}</span></p>
   </div>
-  <small><span class="badge badge-pill badge-default float-right">{{edu.userId}}</span></small>
 </div>

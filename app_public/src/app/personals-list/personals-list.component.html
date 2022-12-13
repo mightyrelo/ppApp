@@ -1,5 +1,4 @@
 <div class="row">
-  
   <div class="col-12" >
     <small>
       <button *ngIf="isLoggedIn()" class="btn-primary" (click)="openForm=true">add Personals </button>
@@ -61,10 +60,10 @@
       </div>
     </small>
   </h4>
-  <small><span class="badge badge-pill badge-default float-right">{{personal.idNo}}</span></small>
-  <p class="address">{{personal.nationality}}</p>
+  <p class="address"><b>Nationality: </b> {{personal.nationality}}</p>
+  <p class="address"><b>Gender: </b> {{personal.gender}}</p>
   <div class="facilities">
-    <span *ngFor="let language of personal.languages" class="badge badge-warning">{{language}}</span>
+    <p class="address"><b>Languages: </b> <span *ngFor="let language of personal.languages" class="badge badge-warning">{{language}}</span>
+    </p>
   </div>
-  <small><span class="badge badge-pill badge-default float-right">{{personal.userId}}</span></small>
 </div>
