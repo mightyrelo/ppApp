@@ -9,12 +9,12 @@ export class HomePageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'Home',
-      strapline: 'This is the home page'
+      title: 'Katlego Gagoopane',
+      strapline: 'Full Stack Web Developer'
     },
     sideBar: {
-      main: 'Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app Introduction to app ',
-      sub: 'Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app Call to action regarding app '
+      main: 'I\'m a self-taught developer who learned to code by working on applications that I found useful in my life and career.',
+      sub: 'Through this process of \'learning by creating \' I have come to gain a good grasp of the C-family of languages. The languages I have worked with in the past include C++, Java, PHP, Javascript and C#. I\'m also proficient at working with both SQL and NoSQL databases, using Git, deploying Express and Apache web applications on live environments'
     }
   };
 

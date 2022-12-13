@@ -12,7 +12,12 @@ const auth = jwt({
 
 const mCtrl = require('../controllers/Ms');
 const smCtrl = require('../controllers/SMs');
+const personalCtrl = require('../controllers/Personals');
 const authCtrl = require('../controllers/authentication');
+const eduCtrl = require('../controllers/Educations');
+const workCtrl = require('../controllers/Works');
+const projCtrl = require('../controllers/Projects');
+const contactCtrl = require('../controllers/Contacts');
 
 
 //model/collection routes
@@ -46,5 +51,76 @@ router
 
 router.post('/register', authCtrl.register);
 router.post('/login', authCtrl.login);
+
+
+/////////
+//model/collection routes
+//list
+router
+  .route('/personals')
+  .get(personalCtrl.personalsReadAll)
+  .post(auth, personalCtrl.personalsCreateOne);
+//instances/document routes
+router
+  .route('/personals/:personalId')
+  .get(personalCtrl.personalsReadOne)
+  .put(personalCtrl.personalsUpdateOne)
+  .delete(auth, personalCtrl.personalsDeleteOne);
+
+
+//model/collection routes
+//list
+router
+  .route('/educations')
+  .get(eduCtrl.educationsReadAll)
+  .post(auth, eduCtrl.educationsCreateOne);
+//instances/document routes
+router
+  .route('/educations/:educationId')
+  .get(eduCtrl.educationsReadOne)
+  .put(eduCtrl.educationsUpdateOne)
+  .delete(auth, eduCtrl.educationsDeleteOne);
+
+
+//model/collection routes
+//list
+router
+  .route('/works')
+  .get(workCtrl.worksReadAll)
+  .post(auth, workCtrl.worksCreateOne);
+//instances/document routes
+router
+  .route('/works/:workId')
+  .get(workCtrl.worksReadOne)
+  .put(workCtrl.worksUpdateOne)
+  .delete(auth, workCtrl.worksDeleteOne);
+
+
+//model/collection routes
+//list
+router
+  .route('/projects')
+  .get(projCtrl.projectsReadAll)
+  .post(auth, projCtrl.projectsCreateOne);
+//instances/document routes
+router
+  .route('/projects/:projectId')
+  .get(projCtrl.projectsReadOne)
+  .put(projCtrl.projectsUpdateOne)
+  .delete(auth, projCtrl.projectsDeleteOne);
+//model/collection routes
+//list
+router
+  .route('/contacts')
+  .get(contactCtrl.contactsReadAll)
+  .post(auth, contactCtrl.contactsCreateOne);
+//instances/document routes
+router
+  .route('/contacts/:contactId')
+  .get(contactCtrl.contactsReadOne)
+  .put(contactCtrl.contactsUpdateOne)
+  .delete(auth, contactCtrl.contactsDeleteOne);
+
+
 
 module.exports = router;
