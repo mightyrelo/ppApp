@@ -63,8 +63,9 @@ margin-left: -16px;
 margin-bottom: 0.5em;
 }
 .badge-default, .badge-pill, .badge, .btn-primary {
-background-color: rgb(128, 62, 0);
+background-color: yellow;
 border-color: greenyellow;
+color: black;
 }
 h4 a, h4 a:hover {
 color: #fff;
