@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactListPageComponent implements OnInit {
 
+  public pageContent = {
+    header: {
+      title: 'Contact Info',
+      strapline: 'what contacts have you worked on in the past?'
+    },
+    sideBar: {
+      main: 'contacts history',
+      sub: 'roles performed working at certain company'
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {

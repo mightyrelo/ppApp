@@ -1,3 +1,5 @@
-<p>
-  contact-list-page works!
-</p>
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="row">
+  <app-contact-list-content class="col-12 col-md-8" ></app-contact-list-content>
+  <app-side-bar [content]="pageContent.sideBar" class="col-12 col-md-4"></app-side-bar>
+</div>
