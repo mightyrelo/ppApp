@@ -11,12 +11,12 @@ export class WorkListPageComponent implements OnInit {
 
   public pageContent = {
     header: {
-      title: 'Work Info',
-      strapline: 'where have you worked in the past?'
+      title: 'Work Experience',
+      strapline: '2014 - Present'
     },
     sideBar: {
-      main: 'works history',
-      sub: 'roles performed working at certain company'
+      main: 'I have never been formally employed.',
+      sub: 'After dropping out of University in 2011 I started a business offering audio/video digitization services. After doing that for about a year I began another venture this time working with gate motors in 2014. In December 2015 I started free-lancing for an insurance company and have been there ever since.'
     }
   };
 

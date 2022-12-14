@@ -77,7 +77,8 @@ const doUpdatePersonals = (req, res, personal) => {
         personal.idNo = parseInt(req.body.idNo);
     }
     if(req.body.languages) {
-      personal.languages = req.body.languages;
+      //personal.languages = req.body.languages;
+      personal.languages = req.body.languages.split(',')
     }
     if(req.body.passions){
         personal.passions = req.body.passions;

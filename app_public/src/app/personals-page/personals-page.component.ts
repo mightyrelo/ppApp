@@ -10,11 +10,11 @@ export class PersonalsPageComponent implements OnInit {
   public pageContent = {
     header: {
       title: 'Personal Info',
-      strapline: 'what makes you, you?'
+      strapline: 'defining characteristics'
     },
     sideBar: {
-      main: 'main',
-      sub: 'side'
+      main: '',
+      sub: 'click on name for more info'
     }
   };
 
