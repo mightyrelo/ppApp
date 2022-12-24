@@ -17,12 +17,12 @@ const authCtrl = require('../controllers/authentication');
 //model/collection routes
 //list
 router
-  .route('/personals')
+  .route('/')
   .get(personalCtrl.personalReadAll)
   .post(auth, personalCtrl.personalCreateOne);
 //instances/document routes
 router
-  .route('/personals/:personalId')
+  .route('/:personalId')
   .get(personalCtrl.personalReadOne)
   .put(personalCtrl.personalUpdateOne)
   .delete(auth, personalCtrl.personalDeleteOne);

@@ -122,7 +122,6 @@ export class MListComponent implements OnInit {
   }
 
   public deleteM(id: string) : void {
-    console.log('here is');
     for(let i = 0; i < this.ms.length; i++) {
       if(this.ms[i]._id === id) {
        this.mDataService.deleteMById(id)

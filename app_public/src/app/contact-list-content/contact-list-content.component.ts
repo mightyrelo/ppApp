@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 import { Contact } from '../contact';
 import { ContactDataService } from '../contact-data.service';
 import { AuthenticationService } from '../authentication.service';
