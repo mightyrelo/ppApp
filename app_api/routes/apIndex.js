@@ -24,7 +24,7 @@ const contactCtrl = require('../controllers/Contacts');
 //list
 router
   .route('/ms')
-  .get(mCtrl.mReadAll)
+  .get(auth, mCtrl.mReadAll)
   .post(auth, mCtrl.mCreateOne);
 //instances/document routes
 router
